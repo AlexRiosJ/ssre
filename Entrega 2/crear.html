@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+    <script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <title>Crear Horario</title>
+    <style>
+        .table-fixed tbody {
+            height: 230px;
+            overflow-y: auto;
+            display: block;
+        }
+
+        .table-fixed td:nth-child(3) {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Crear horario</h1>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <p class="small">Expediente: 708932, Alumno: RIOS JASSO ALEJANDRO</p>
+                    <p class="small">Periodo de Inscripción: INGENIERIA EN SISTEMAS COMPUTACIONALES - Primavera 2019
+                        Ordinario</p>
+                </div>
+                <div class="col">
+                    <p class="small">Plan de estudios: ISC2016 - INGENIERIA EN SISTEMAS COMPUTACIONALES - Primavera 2019
+                        Ordinario</p>
+                </div>
+            </div>
+        </div>
+        <table class="table text-center table-sm small" style="table-layout:fixed">
+            <tr>
+                <td class="table-success">(A) Aprobada</td>
+                <td class="table-danger">(R) Reprobada</td>
+                <td class="table-primary">(IA) Inscrita Periodo Actual</td>
+                <td class="table-info">(I) Inscrita</td>
+                <td class="table-warning">(S) Sugerida</td>
+                <td>(NI) No Inscrita</td>
+                <td class="table-secondary">(X) Seriada</td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col col-lg-4">
+                <div class="container">
+                    <h5>Oferta Académica</h5>
+                    <hr>
+                    <ul class="nav nav-tabs nav-justified small">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#cu_tab">CU y SP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#sc_tab">SC</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#ing_tab">Inglés</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#pap_tab">PAP</a>
+                        </li>
+                    </ul>
+                    <div id="tabContent" class="tab-content">
+                        <div class="tab-pane show active" id="cu_tab">
+                            <table class="table table-bordered table-sm">
+                                <thead class="table-active text-center">
+                                    <th class="th-sm">Es</th>
+                                    <th class="th-sm">Ci</th>
+                                    <th class="th-sm" style="width: 100%">Asignatura</th>
+                                    <th class="th-sm">Cr</th>
+                                    <th class="th-sm">Ar</th>
+                                    <th class="th-sm">..</th>
+                                </thead>
+                            </table>
+                            <table class="table table-bordered table-sm table-fixed">
+                                <tbody class="small table-sm">
+                                    <tr class="table-success">
+                                        <td>A</td>
+                                        <td>0</td>
+                                        <td>EJE DE DESAFIOS ETICOS CONTEMPORANEOS</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-primary">
+                                        <td>IA</td>
+                                        <td>0</td>
+                                        <td>DESARROLLO DE APLICACIONES Y SERVICIOS WEB</td>
+                                        <td>8</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-info">
+                                        <td>I</td>
+                                        <td>0</td>
+                                        <td>DESARROLLO DE APLICACIONES MOVILES</td>
+                                        <td>8</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-warning">
+                                        <td>S</td>
+                                        <td>0</td>
+                                        <td>ARQUITECTURA COMPUTACIONAL</td>
+                                        <td>8</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NI</td>
+                                        <td>0</td>
+                                        <td>APRENDIZAJE MÁQUINA</td>
+                                        <td>8</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>FUNDAMENTOS DE SISTEMAS OPERATIVOS</td>
+                                        <td>8</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="sc_tab">
+                            <table class="table table-bordered table-sm">
+                                <thead class="table-active text-center">
+                                    <th class="th-sm">Es</th>
+                                    <th class="th-sm">Ci</th>
+                                    <th class="th-sm" style="width: 100%">Asignatura</th>
+                                    <th class="th-sm">Cr</th>
+                                    <th class="th-sm">Ar</th>
+                                    <th class="th-sm">..</th>
+                                </thead>
+                            </table>
+                            <table class="table table-bordered table-sm table-fixed">
+                                <tbody class="small table-sm">
+                                    <tr class="table-info">
+                                        <td>I</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-warning">
+                                        <td>S</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="ing_tab">
+                            <table class="table table-bordered table-sm">
+                                <thead class="table-active text-center">
+                                    <th class="th-sm">Es</th>
+                                    <th class="th-sm">Ci</th>
+                                    <th class="th-sm" style="width: 100%">Asignatura</th>
+                                    <th class="th-sm">Cr</th>
+                                    <th class="th-sm">Ar</th>
+                                    <th class="th-sm">..</th>
+                                </thead>
+                            </table>
+                            <table class="table table-bordered table-sm table-fixed">
+                                <tbody class="small table-sm">
+                                    <tr class="table-danger">
+                                        <td>R</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NI</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="pap_tab">
+                            <table class="table table-bordered table-sm">
+                                <thead class="table-active text-center">
+                                    <th class="th-sm">Es</th>
+                                    <th class="th-sm">Ci</th>
+                                    <th class="th-sm" style="width: 100%">Asignatura</th>
+                                    <th class="th-sm">Cr</th>
+                                    <th class="th-sm">Ar</th>
+                                    <th class="th-sm">..</th>
+                                </thead>
+                            </table>
+                            <table class="table table-bordered table-sm table-fixed">
+                                <tbody class="small table-sm">
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <td>X</td>
+                                        <td>0</td>
+                                        <td>Lorem ipsum dolor sit amet.</td>
+                                        <td>4</td>
+                                        <td>DEC</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-8">
+                <div class="container">
+                    <!-- Aqui va en realidad el horario.html cuando se pase a Angular -->
+                    <table class="table table-bordered small table-sm text-center">
+                        <thead class="table-sm small">
+                            <tr class="text-light table-primary">
+                                <th scope="col" style="width:50px;">Hora</th>
+                                <th scope="col" style="width:100px;">Lunes</th>
+                                <th scope="col" style="width:100px;">Martes</th>
+                                <th scope="col" style="width:100px;">Miércoles</th>
+                                <th scope="col" style="width:100px;">Jueves</th>
+                                <th scope="col" style="width:100px;">Viernes</th>
+                                <th scope="col" style="width:100px;">Sábado</th>
+                            </tr>
+                        </thead>
+                        <tbody class="small">
+                            <tr style="height:50px;">
+                                <td class="table-light">7:00 - 8:55</td>
+                                <td class="table-info">ARQUITECTURA COMPUTACIONAL - T205</td>
+                                <td class="table-info">SEGURIDAD EN REDES - D303</td>
+                                <td class="table-active"></td>
+                                <td class="table-info">ARQUITECTURA COMPUTACIONAL - T205</td>
+                                <td class="table-info">SEGURIDAD EN REDES - D303</td>
+                                <td class="table-active"></td>
+                            </tr>
+                            <tr style="height:50px;">
+                                <td class="table-light">9:00 - 10:55</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                            </tr>
+                            <tr style="height:50px;">
+                                <td class="table-light">11:00 - 12:55</td>
+                                <td class="table-info">DESARROLLO DE APLICACIONES Y SERVICIOS WEB - T202</td>
+                                <td class="table-info">INNOVACION Y EMPRENDIMIENTO - D208</td>
+                                <td class="table-info">DESARROLLO DE APLICACIONES Y SERVICIOS WEB - T202</td>
+                                <td class="table-info">INNOVACION Y EMPRENDIMIENTO - D208</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                            </tr>
+                            <tr style="height:50px;">
+                                <td class="table-light">13:00 - 14:55</td>
+                                <td class="table-info">ESPECIFICACIÓN DE REQUERIMIENTOS DE SISTEMAS DE INFORMACION -
+                                    W110</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-info">ESPECIFICACIÓN DE REQUERIMIENTOS DE SISTEMAS DE INFORMACION -
+                                    W110</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                            </tr>
+                            <tr style="height:50px;">
+                                <td class="table-light">16:00 - 17:55</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                            </tr>
+                            <tr style="height:50px;">
+                                <td class="table-light">18:00 - 19:55</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                            </tr>
+                            <tr style="height:50px;">
+                                <td class="table-light">20:00 - 21:55</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <button type="button" class="btn btn-primary btn-lg btn-block">Crear</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block">Guardar</button>
+        </div>
+    </div>
+</body>
+
+</html>
