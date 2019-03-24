@@ -16,7 +16,7 @@
     <div class="container mt-3">
         <h2>Sistema de Simulación de Ruta de Estudios</h2>
         <div class="row">
-            <div class="col-5">
+            <div class="col col-lg-4">
                 <hr>
                 <div id="perfil">
                     <h5>Hola (nombre de usuario)</h5>
@@ -76,18 +76,287 @@
                     </table>
                 </div>
                 <hr>
-                <h5 class="text-primary">Bienvenido al Sistema de Simulación de Ruta de Estudios del ITESO</h5>
-                <p class="text-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, alias? Possimus
-                    laudantium eveniet dicta itaque.</p>
-                <blockquote class="blockquote text-center"><em>asesoria@ayuda.mx</em></blockquote>
-                <p class="text-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, alias? Possimus
-                    laudantium eveniet dicta itaque.</p>
-                <h6>Novedades</h6>
-                <h6 class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, placeat.
-                </h6>
+                <div id="informacionNovedades">
+                    <h5 class="text-primary">Bienvenido al Sistema de Simulación de Ruta de Estudios del ITESO</h5>
+                    <p class="text-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, alias?
+                        Possimus
+                        laudantium eveniet dicta itaque.</p>
+                    <blockquote class="blockquote text-center"><em>asesoria@ayuda.mx</em></blockquote>
+                    <p class="text-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, alias?
+                        Possimus
+                        laudantium eveniet dicta itaque.</p>
+                    <h6>Novedades</h6>
+                    <h6 class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, placeat.
+                    </h6>
+                </div>
+            </div>
+            <div class="col col-lg-8">
                 <hr>
+                <div id="horarioActual">
+                    <h5>Horario actual</h5>
+                    <!-- Aqui va en realidad el horario.html cuando se pase a Angular -->
+                    <table class="table table-bordered small table-sm text-center">
+                        <thead class="table-sm small">
+                            <tr class="text-light table-primary">
+                                <th scope="col" style="width:50px;">Hora</th>
+                                <th scope="col" style="width:100px;">Lunes</th>
+                                <th scope="col" style="width:100px;">Martes</th>
+                                <th scope="col" style="width:100px;">Miércoles</th>
+                                <th scope="col" style="width:100px;">Jueves</th>
+                                <th scope="col" style="width:100px;">Viernes</th>
+                                <th scope="col" style="width:100px;">Sábado</th>
+                            </tr>
+                        </thead>
+                        <tbody class="small">
+                            <tr style="height:50px;">
+                                <td class="table-light">7:00 - 8:55</td>
+                                <td class="table-info">ARQUITECTURA COMPUTACIONAL - T205</td>
+                                <td class="table-info">SEGURIDAD EN REDES - D303</td>
+                                <td class="table-active"></td>
+                                <td class="table-info">ARQUITECTURA COMPUTACIONAL - T205</td>
+                                <td class="table-info">SEGURIDAD EN REDES - D303</td>
+                                <td class="table-active"></td>
+                            </tr>
+                            <tr style="height:50px;">
+                                <td class="table-light">9:00 - 10:55</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                            </tr>
+                            <tr style="height:50px;">
+                                <td class="table-light">11:00 - 12:55</td>
+                                <td class="table-info">DESARROLLO DE APLICACIONES Y SERVICIOS WEB - T202</td>
+                                <td class="table-info">INNOVACION Y EMPRENDIMIENTO - D208</td>
+                                <td class="table-info">DESARROLLO DE APLICACIONES Y SERVICIOS WEB - T202</td>
+                                <td class="table-info">INNOVACION Y EMPRENDIMIENTO - D208</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                            </tr>
+                            <tr style="height:50px;">
+                                <td class="table-light">13:00 - 14:55</td>
+                                <td class="table-info">ESPECIFICACIÓN DE REQUERIMIENTOS DE SISTEMAS DE INFORMACION -
+                                    W110</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-info">ESPECIFICACIÓN DE REQUERIMIENTOS DE SISTEMAS DE INFORMACION -
+                                    W110</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                            </tr>
+                            <tr style="height:50px;">
+                                <td class="table-light">16:00 - 17:55</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                            </tr>
+                            <tr style="height:50px;">
+                                <td class="table-light">18:00 - 19:55</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                            </tr>
+                            <tr style="height:50px;">
+                                <td class="table-light">20:00 - 21:55</td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                                <td class="table-active"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <hr>
+                <div id="listaOpciones">
+                    <h5>Lista de opciones</h5>
+                    <div id="h_1">
+                        <h6 class="muted-text">Nombre de horario (Ej. 7mo Semestre)</h6>
+                        <!-- Aqui en realidad estará la lista de horarios como horario.html cuando se pase a Angular -->
+                        <table class="table table-bordered small table-sm text-center">
+                            <thead class="table-sm small">
+                                <tr class="text-light table-primary">
+                                    <th scope="col" style="width:50px;">Hora</th>
+                                    <th scope="col" style="width:100px;">Lunes</th>
+                                    <th scope="col" style="width:100px;">Martes</th>
+                                    <th scope="col" style="width:100px;">Miércoles</th>
+                                    <th scope="col" style="width:100px;">Jueves</th>
+                                    <th scope="col" style="width:100px;">Viernes</th>
+                                    <th scope="col" style="width:100px;">Sábado</th>
+                                </tr>
+                            </thead>
+                            <tbody class="small">
+                                <tr style="height:50px;">
+                                    <td class="table-light">7:00 - 8:55</td>
+                                    <td class="table-info">ARQUITECTURA COMPUTACIONAL - T205</td>
+                                    <td class="table-info">SEGURIDAD EN REDES - D303</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-info">ARQUITECTURA COMPUTACIONAL - T205</td>
+                                    <td class="table-info">SEGURIDAD EN REDES - D303</td>
+                                    <td class="table-active"></td>
+                                </tr>
+                                <tr style="height:50px;">
+                                    <td class="table-light">9:00 - 10:55</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                </tr>
+                                <tr style="height:50px;">
+                                    <td class="table-light">11:00 - 12:55</td>
+                                    <td class="table-info">DESARROLLO DE APLICACIONES Y SERVICIOS WEB - T202</td>
+                                    <td class="table-info">INNOVACION Y EMPRENDIMIENTO - D208</td>
+                                    <td class="table-info">DESARROLLO DE APLICACIONES Y SERVICIOS WEB - T202</td>
+                                    <td class="table-info">INNOVACION Y EMPRENDIMIENTO - D208</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                </tr>
+                                <tr style="height:50px;">
+                                    <td class="table-light">13:00 - 14:55</td>
+                                    <td class="table-info">ESPECIFICACIÓN DE REQUERIMIENTOS DE SISTEMAS DE INFORMACION -
+                                        W110</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-info">ESPECIFICACIÓN DE REQUERIMIENTOS DE SISTEMAS DE INFORMACION -
+                                        W110</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                </tr>
+                                <tr style="height:50px;">
+                                    <td class="table-light">16:00 - 17:55</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                </tr>
+                                <tr style="height:50px;">
+                                    <td class="table-light">18:00 - 19:55</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                </tr>
+                                <tr style="height:50px;">
+                                    <td class="table-light">20:00 - 21:55</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-outline-danger">Eliminar opción</button>
+                        <hr>
+                    </div>
+                    <div id="h_2">
+                        <h6 class="muted-text">Nombre de horario (Ej. 7mo Semestre Tarde)</h6>
+                        <!-- Aqui en realidad estará la lista de horarios como horario.html cuando se pase a Angular -->
+                        <table class="table table-bordered small table-sm text-center">
+                            <thead class="table-sm small">
+                                <tr class="text-light table-primary">
+                                    <th scope="col" style="width:50px;">Hora</th>
+                                    <th scope="col" style="width:100px;">Lunes</th>
+                                    <th scope="col" style="width:100px;">Martes</th>
+                                    <th scope="col" style="width:100px;">Miércoles</th>
+                                    <th scope="col" style="width:100px;">Jueves</th>
+                                    <th scope="col" style="width:100px;">Viernes</th>
+                                    <th scope="col" style="width:100px;">Sábado</th>
+                                </tr>
+                            </thead>
+                            <tbody class="small">
+                                <tr style="height:50px;">
+                                    <td class="table-light">7:00 - 8:55</td>
+                                    <td class="table-info">ARQUITECTURA COMPUTACIONAL - T205</td>
+                                    <td class="table-info">SEGURIDAD EN REDES - D303</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-info">ARQUITECTURA COMPUTACIONAL - T205</td>
+                                    <td class="table-info">SEGURIDAD EN REDES - D303</td>
+                                    <td class="table-active"></td>
+                                </tr>
+                                <tr style="height:50px;">
+                                    <td class="table-light">9:00 - 10:55</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                </tr>
+                                <tr style="height:50px;">
+                                    <td class="table-light">11:00 - 12:55</td>
+                                    <td class="table-info">DESARROLLO DE APLICACIONES Y SERVICIOS WEB - T202</td>
+                                    <td class="table-info">INNOVACION Y EMPRENDIMIENTO - D208</td>
+                                    <td class="table-info">DESARROLLO DE APLICACIONES Y SERVICIOS WEB - T202</td>
+                                    <td class="table-info">INNOVACION Y EMPRENDIMIENTO - D208</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                </tr>
+                                <tr style="height:50px;">
+                                    <td class="table-light">13:00 - 14:55</td>
+                                    <td class="table-info">ESPECIFICACIÓN DE REQUERIMIENTOS DE SISTEMAS DE INFORMACION -
+                                        W110</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-info">ESPECIFICACIÓN DE REQUERIMIENTOS DE SISTEMAS DE INFORMACION -
+                                        W110</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                </tr>
+                                <tr style="height:50px;">
+                                    <td class="table-light">16:00 - 17:55</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                </tr>
+                                <tr style="height:50px;">
+                                    <td class="table-light">18:00 - 19:55</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                </tr>
+                                <tr style="height:50px;">
+                                    <td class="table-light">20:00 - 21:55</td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                    <td class="table-active"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-outline-danger">Eliminar opción</button>
+                        <hr>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block">Volver arriba</button>
             </div>
         </div>
+    </div>
     </div>
 </body>
 
