@@ -26,7 +26,7 @@
                     <label for="inputPassword">Contraseña</label>
                     <input type="password" class="form-control input-normal" id="inputPassword"
                         aria-describedby="passwordHelp">
-                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <a href="#" data-toggle="modal" data-target="#pswModal">¿Olvidaste tu contraseña?</a>
                 </div>
                 <button type="submit" class="btn btn-primary">INGRESAR</button>
             </form>
@@ -35,7 +35,27 @@
             ¿Eres nuevo? <span><a href="#">Crea una cuenta</a></span>
         </div>
     </div>
-    
+
+    <div class="modal" id="pswModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reinicia tu contraseña</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Ingresa tu correo electrónico y enviaremos un link para reiniciar tu contraseña.</p>
+                    <input type="email" class="form-control input-normal" id="inputEmailReset">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Enviar correo de reinicio de contraseña</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
