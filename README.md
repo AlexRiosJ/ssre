@@ -1,6 +1,4 @@
-# Sistema de Simulación de Ruta de Estudios - ITESO SSRE
-
-Repositorio del desarrollo de la aplicación web para la asignadura Desarrollo de Aplicación y Servicios Web.
+# SSRE
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
 
