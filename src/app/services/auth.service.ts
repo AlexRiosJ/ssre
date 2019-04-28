@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  private token = '';
+  private token = 'test';
   constructor() { }
 
   isAuthenticated(): boolean {
