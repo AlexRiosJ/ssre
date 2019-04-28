@@ -11,10 +11,10 @@
           <li class="nav-item active" routerLinkActive="active">
               <a class="nav-link" href="" routerlink="/Home">Inicio <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item" routerLinkActive="active">
+          <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
               <a class="nav-link" href="#">Asignaturas</a>
           </li>
-          <li class="nav-item" routerLinkActive="active">
+          <li class="nav-item" routerLinkActive="active" >
             <a class="nav-link" href="#" routerLink="/about">Acerca de</a>
           </li>
           <!-- <li class="nav-item dropdown">

@@ -11,7 +11,6 @@ import { SubjectComponent } from './subject-list/subject/subject.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { IndexComponent } from './index/index.component';
 import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
@@ -25,7 +24,6 @@ import { LandingComponent } from './landing/landing.component';
     SubjectListComponent,
     HomeComponent,
     AboutComponent,
-    IndexComponent,
     LandingComponent
   ],
   imports: [
