@@ -24,7 +24,7 @@ import { LandingComponent } from './landing/landing.component';
     SubjectListComponent,
     HomeComponent,
     AboutComponent,
-    LandingComponent
+    LandingComponent,
   ],
   imports: [
     BrowserModule,
