@@ -12,6 +12,7 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { LandingComponent } from './landing/landing.component';
+import { TeacherComponent } from './teacher/teacher.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LandingComponent } from './landing/landing.component';
     HomeComponent,
     AboutComponent,
     LandingComponent,
+    TeacherComponent,
   ],
   imports: [
     BrowserModule,
