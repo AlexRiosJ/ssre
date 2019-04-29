@@ -4,5 +4,7 @@ export class Subject {
         public id: number,
         public name: string,
         public credits: number,
+        public area: string,
+        public department: string
     ) {}
 }
