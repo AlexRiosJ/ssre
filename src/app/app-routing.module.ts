@@ -7,7 +7,7 @@ import { LandingComponent } from './landing/landing.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 
 const routes: Routes = [
-  {path: '',  redirectTo: '/home', pathMatch: 'full',  canActivate: [AuthGuardService]},
+  {path: '', component :HomeComponent, canActivate: [AuthGuardService]},
   {path: 'home', component: HomeComponent,  canActivate: [AuthGuardService] },
   {path: 'landing', component: LandingComponent},
   {path: 'about', component: AboutComponent},
