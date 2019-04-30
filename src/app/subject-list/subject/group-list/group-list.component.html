@@ -1,4 +1,4 @@
-<div class="modal" id="info-modal">
+<div bsModal #childModal="bs-modal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hide()">Cerrar</button>
       </div>
     </div>
   </div>
