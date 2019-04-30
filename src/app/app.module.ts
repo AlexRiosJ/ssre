@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { ModalModule } from 'ngx-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { LandingComponent } from './landing/landing.component';
 import { TeacherComponent } from './teacher/teacher.component';
+import { GroupListComponent } from './subject-list/subject/group-list/group-list.component';
+import { GroupItemComponent } from './subject-list/subject/group-list/group-item/group-item.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +29,13 @@ import { TeacherComponent } from './teacher/teacher.component';
     AboutComponent,
     LandingComponent,
     TeacherComponent,
+    GroupListComponent,
+    GroupItemComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
