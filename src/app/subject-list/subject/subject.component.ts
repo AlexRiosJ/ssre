@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { GroupListComponent } from './group-list/group-list.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-subject',
@@ -7,8 +6,8 @@ import { GroupListComponent } from './group-list/group-list.component';
   styleUrls: ['./subject.component.css']
 })
 export class SubjectComponent implements OnInit {
-  @ViewChild('childModal') childModal :GroupListComponent;
-  constructor(private viewContainerRef: ViewContainerRef) { }
+
+  constructor() { }
 
   ngOnInit() {
   }

@@ -1,8 +1,8 @@
-import { GroupList } from '../subject-list/subject/group-list/GroupList';
+import { SubjectList } from '../subject-list/SubjectList';
 
 export class Timetable {
     constructor(
         public name: string,
-        public subjects: GroupList[]
+        public subjects: SubjectList[]
     ) { }
 }
