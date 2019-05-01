@@ -8,6 +8,7 @@ import { ClassInformation } from './subject-list/subject/group-list/ClassInforma
   providedIn: 'root'
 })
 export class SchoolService {
+  public allSubjects: Subject[] = [];
   public subjects: Subject[] = [];
   public teachers: Teacher[] = [];
   public groups: GroupList[] = [];
@@ -23,6 +24,7 @@ export class SchoolService {
     request.onload = () => {
       let jsonFile = request.response;
       let subjects = JSON.parse(jsonFile);
+      self.allSubjects = subjects;
 
       for (let subject of subjects) {
         self.addSubject(subject.name, subject.description, subject.credits, subject.area, subject.department, subject.groups);
@@ -44,7 +46,7 @@ export class SchoolService {
 
   addSubject(name: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
     let id = 0;
-    if (this.subjects.length > 0) id = this.subjects[this.subjects.length-1].id + 1;
+    if (this.subjects.length > 0) id = this.subjects[this.subjects.length - 1].id + 1;
 
     let newSubject = new Subject(id, name, description, credits, area, department, groups);
     this.subjects.push(newSubject);
@@ -94,7 +96,7 @@ export class SchoolService {
 
   addGroup(name: string, teacher: Teacher, classInfo: ClassInformation[]) {
     let id = 0;
-    if (this.groups.length > 0) id = this.groups[this.groups.length-1].id + 1;
+    if (this.groups.length > 0) id = this.groups[this.groups.length - 1].id + 1;
 
     let newGroup = new GroupList(id, name, teacher, classInfo);
     this.groups.push(newGroup);
@@ -103,20 +105,20 @@ export class SchoolService {
   modifyGroupById(id: number, name: string, teacher: Teacher, classInfo: ClassInformation[]) {
     let groupIndex = this.groups.findIndex(group => group.id == id);
 
-    if(groupIndex != -1) {
-      if(name != null) this.groups[groupIndex].name = name;
-      if(teacher != null) this.groups[groupIndex].teacher = teacher;
-      if(classInfo != null) this.groups[groupIndex].classInfo = classInfo;
+    if (groupIndex != -1) {
+      if (name != null) this.groups[groupIndex].name = name;
+      if (teacher != null) this.groups[groupIndex].teacher = teacher;
+      if (classInfo != null) this.groups[groupIndex].classInfo = classInfo;
     }
   }
 
   modifyGroupByName(nameToSearch: string, name: string, teacher: Teacher, classInfo: ClassInformation[]) {
     let groupIndex = this.groups.findIndex(group => group.name == nameToSearch);
 
-    if(groupIndex != -1) {
-      if(name != null) this.groups[groupIndex].name = name;
-      if(teacher != null) this.groups[groupIndex].teacher = teacher;
-      if(classInfo != null) this.groups[groupIndex].classInfo = classInfo;
+    if (groupIndex != -1) {
+      if (name != null) this.groups[groupIndex].name = name;
+      if (teacher != null) this.groups[groupIndex].teacher = teacher;
+      if (classInfo != null) this.groups[groupIndex].classInfo = classInfo;
     }
   }
 
@@ -130,7 +132,7 @@ export class SchoolService {
 
   deleteGroupByName(name: string) {
     let groupIndex = this.groups.findIndex(group => group.name == name);
-    
+
     if (groupIndex != -1) {
 
       this.groups.splice(groupIndex, 1);
@@ -139,7 +141,7 @@ export class SchoolService {
 
   addTeacher(name: string, lastName: string) {
     let id = 0;
-    if(this.teachers.length > 0) id = this.teachers[this.teachers.length-1].id + 1;
+    if (this.teachers.length > 0) id = this.teachers[this.teachers.length - 1].id + 1;
 
     let teacher = new Teacher(id, name, lastName);
     this.teachers.push(teacher);
@@ -148,25 +150,25 @@ export class SchoolService {
   modifyTeacherById(id: number, name: string, lastName: string) {
     let teacherIndex = this.teachers.findIndex(teacher => teacher.id == id);
 
-    if(teacherIndex != -1){
-      if(name != null) this.teachers[teacherIndex].name = name;
-      if(lastName != null) this.teachers[teacherIndex].lastname = lastName;
+    if (teacherIndex != -1) {
+      if (name != null) this.teachers[teacherIndex].name = name;
+      if (lastName != null) this.teachers[teacherIndex].lastname = lastName;
     }
   }
 
   modifyTeacherByName(nameToSearch: string, lastNameToSearch: string, name: string, lastName: string) {
     let teacherIndex = this.teachers.findIndex(teacher => teacher.name == nameToSearch && teacher.lastname == lastNameToSearch);
 
-    if(teacherIndex != -1){
-      if(name != null) this.teachers[teacherIndex].name = name;
-      if(lastName != null) this.teachers[teacherIndex].lastname = lastName;
+    if (teacherIndex != -1) {
+      if (name != null) this.teachers[teacherIndex].name = name;
+      if (lastName != null) this.teachers[teacherIndex].lastname = lastName;
     }
   }
 
   deleteTeacherById(id: number) {
     let teacherIndex = this.teachers.findIndex(teacher => teacher.id == id);
 
-    if(teacherIndex != -1) {
+    if (teacherIndex != -1) {
       this.teachers.splice(teacherIndex, 1);
     }
   }
@@ -174,7 +176,7 @@ export class SchoolService {
   deleteTeacherByName(name: string, lastName: string) {
     let teacherIndex = this.teachers.findIndex(teacher => teacher.name == name && teacher.lastname == lastName);
 
-    if(teacherIndex != -1) {
+    if (teacherIndex != -1) {
       this.teachers.splice(teacherIndex, 1);
     }
   }
@@ -182,11 +184,11 @@ export class SchoolService {
   createSubjectMatrix(subjects: GroupList[]) {
     let matrix: GroupList[][];
     matrix.length = 7;
-    for(let i = 0; i < 7; i++)
+    for (let i = 0; i < 7; i++)
       matrix[i].length = 6;
 
-    let daysMap = {"MONDAY": 0, "TUESDAY": 1, "WEDNESDAY": 2, "THURSDAY": 3, "FRIDAY": 4, "SATURDAY": 5};
-    let hoursMap = {"7:00": 0, "9:00": 1, "11:00": 2, "13:00": 3, "16:00": 4, "18:00": 5, "20:00": 6};
+    let daysMap = { "MONDAY": 0, "TUESDAY": 1, "WEDNESDAY": 2, "THURSDAY": 3, "FRIDAY": 4, "SATURDAY": 5 };
+    let hoursMap = { "7:00": 0, "9:00": 1, "11:00": 2, "13:00": 3, "16:00": 4, "18:00": 5, "20:00": 6 };
 
     for (let group of subjects) {
       for (let info of group.classInfo) {
