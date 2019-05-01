@@ -15,6 +15,8 @@ import { LandingComponent } from './landing/landing.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { GroupListComponent } from './subject-list/subject/group-list/group-list.component';
 import { GroupItemComponent } from './subject-list/subject/group-list/group-item/group-item.component';
+import { TimelineCreateComponent } from './timeline-create/timeline-create.component';
+import {SubjectListCreateComponent} from './timeline-create/subject-list-create/subject-list-create.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { GroupItemComponent } from './subject-list/subject/group-list/group-item
     TeacherComponent,
     GroupListComponent,
     GroupItemComponent,
+    TimelineCreateComponent,
+    SubjectListCreateComponent,
   ],
   imports: [
     BrowserModule,
