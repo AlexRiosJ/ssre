@@ -13,8 +13,6 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { LandingComponent } from './landing/landing.component';
 import { TeacherComponent } from './teacher/teacher.component';
-import { GroupListComponent } from './subject-list/subject/group-list/group-list.component';
-import { GroupItemComponent } from './subject-list/subject/group-list/group-item/group-item.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +27,6 @@ import { GroupItemComponent } from './subject-list/subject/group-list/group-item
     AboutComponent,
     LandingComponent,
     TeacherComponent,
-    GroupListComponent,
-    GroupItemComponent,
   ],
   imports: [
     BrowserModule,
