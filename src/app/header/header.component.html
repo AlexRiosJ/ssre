@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
-    <a class="navbar-brand" href="" routerLinkActive="active" routerlink="/Home">
+    <a class="navbar-brand" href="" routerLinkActive="active" routerLink="/home">
         <img class="icon-image" src="../../assets/ssre.png" alt="">
     </a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-main"
@@ -11,10 +11,10 @@
 
       <ul class="navbar-nav mr-auto">
           <li class="nav-item active" routerLinkActive="active">
-              <a class="nav-link" href="" routerlink="/Home">Inicio <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="" routerLink="/home">Inicio <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
-              <a class="nav-link" href="">Asignaturas</a>
+              <a class="nav-link" href="" routerLink="/subjects">Asignaturas</a>
           </li>
           <li class="nav-item" routerLinkActive="active" >
             <a class="nav-link" href="" routerLink="/about">Acerca de</a>
