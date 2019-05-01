@@ -10,7 +10,7 @@ import { SchoolService } from '../school.service';
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean;
   
-  constructor(auth: AuthService, private schoolService: SchoolService) {
+  constructor(auth: AuthService) {
     this.isLoggedIn = auth.isAuthenticated();
   }
 

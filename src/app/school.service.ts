@@ -178,4 +178,23 @@ export class SchoolService {
       this.teachers.splice(teacherIndex, 1);
     }
   }
+
+  createSubjectMatrix(subjects: GroupList[]) {
+    let matrix: GroupList[][];
+    matrix.length = 7;
+    for(let i = 0; i < 7; i++)
+      matrix[i].length = 6;
+
+    let daysMap = {"MONDAY": 0, "TUESDAY": 1, "WEDNESDAY": 2, "THURSDAY": 3, "FRIDAY": 4, "SATURDAY": 5};
+    let hoursMap = {"7:00": 0, "9:00": 1, "11:00": 2, "13:00": 3, "16:00": 4, "18:00": 5, "20:00": 6};
+
+    for (let group of subjects) {
+      for (let info of group.classInfo) {
+        let hour = hoursMap[info.day];
+        let day = daysMap[info.day];
+
+        matrix[hour][day] = group;
+      }
+    }
+  }
 }
