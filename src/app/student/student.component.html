@@ -1,3 +1,64 @@
-<p>
-  student works!
-</p>
+<div class="container mt-3">
+  <h3>Mi cuenta</h3>
+  <hr>
+  <div class="card mb-3">
+      <div class="card-body">
+          <h5 class="card-title">Nombre y apellidos</h5>
+          <h6 class="card-subtitle text-muted">Alguien de prueba</h6>
+          <br>
+          <h5 class="card-title">Nombre de usuario</h5>
+          <h6 class="card-subtitle text-muted">Username</h6>
+          <br>
+          <h5 class="card-title">Correo electrónico</h5>
+          <h6 class="card-subtitle text-muted">alguien@iteso.mx</h6>
+          <br>
+          <h5 class="card-title">Carrera</h5>
+          <h6 class="card-subtitle text-muted">Ing. Sistemas Computacionales</h6>
+          <br>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#editModal">Editar</button>
+      </div>
+  </div>
+</div>
+<div id="editModal" class="modal">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Editar</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <h5>Nombre</h5>
+              <input class="form-control" type="text" placeholder="Nombre" value="Nombre actual">
+              <br>
+              <h5>Apellidos</h5>
+              <input class="form-control" type="text" placeholder="Apellidos" value="Apellidos actuales">
+              <br>
+              <h5>Nombre de usuario</h5>
+              <input class="form-control" type="text" placeholder="Nombre de usuario" value="alguien123">
+              <br>
+              <h5>Correo electrónico</h5>
+              <input class="form-control" type="email" placeholder="Correo electrónico" value="alguien@iteso.mx">
+              <br>
+              <h5>Carrera</h5>
+              <div class="form-group">
+                  <select class="form-control">
+                      <option value="1">Ing. en Sistemas</option>
+                      <option value="2">Ing. en Electronica</option>
+                      <option value="3">Psicología</option>
+                      <option value="4">Derecho</option>
+                      <option value="5">Administración de empresas</option>
+                  </select>
+              </div>
+              <br>
+              <a href="#">¿Cambiar contraseña?</a>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-outline-danger mr-auto">Eliminar cuenta</button>
+              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Guardar</button>
+          </div>
+      </div>
+  </div>
+</div>
