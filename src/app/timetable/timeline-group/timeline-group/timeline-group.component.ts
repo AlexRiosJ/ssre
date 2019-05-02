@@ -16,4 +16,8 @@ export class TimelineGroupComponent implements OnInit {
   ngOnInit() {
   }
 
+  getStyle(): string {
+    return 'background-color: ' + this.color + ';';
+  }
+
 }
