@@ -18,6 +18,8 @@ import { GroupItemComponent } from './subject-list/subject/group-list/group-item
 import { LoginComponent } from './login/login.component';
 import { StudentEditComponent } from './student/student-edit/student-edit.component';
 import { FormsModule } from '@angular/forms';
+import { TimelineCreateComponent } from './timeline-create/timeline-create.component';
+import {SubjectListCreateComponent} from './timeline-create/subject-list-create/subject-list-create.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { FormsModule } from '@angular/forms';
     GroupItemComponent,
     LoginComponent,
     StudentEditComponent,
+    TimelineCreateComponent,
+    SubjectListCreateComponent,
   ],
   imports: [
     BrowserModule,
