@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GroupList } from '../subject-list/subject/group-list/GroupList';
 import { ClassInformation } from '../subject-list/subject/group-list/ClassInformation';
 import { UserService } from '../user.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-timeline-create',
@@ -57,6 +58,13 @@ export class TimelineCreateComponent implements OnInit {
       return group;
     }
     return undefined;
+  }
+
+  submit(formulario: NgForm) {
+    const timetableToSend = this.tempTimetable;
+    this.userService.getActiveStudent().timetables.push({name: formulario.value.id, subjects: timetableToSend});
+    this.tempTimetable = [];
+    formulario.reset();
   }
 
 }
