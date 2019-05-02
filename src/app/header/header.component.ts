@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-<<<<<<< HEAD
-=======
 import { SchoolService } from '../school.service';
 import { Subscription } from 'rxjs';
 import { UserService } from '../user.service';
->>>>>>> 331e87cca86da050df0d949f82410d5424065601
 
 @Component({
   selector: 'app-header',
