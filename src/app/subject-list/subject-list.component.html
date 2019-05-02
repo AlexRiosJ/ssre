@@ -13,6 +13,5 @@
       </tr>
     </thead>
   </table>
-  <!-- ngFor -->
-  <app-subject></app-subject>
+  <app-subject *ngFor="let subject of getSubjects()" [subject]="subject"></app-subject>
 </div>
