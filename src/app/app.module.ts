@@ -20,6 +20,7 @@ import { StudentEditComponent } from './student/student-edit/student-edit.compon
 import { FormsModule } from '@angular/forms';
 import { TimelineCreateComponent } from './timeline-create/timeline-create.component';
 import {SubjectListCreateComponent} from './timeline-create/subject-list-create/subject-list-create.component';
+import { TimelineGroupComponent } from './timetable/timeline-group/timeline-group/timeline-group.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {SubjectListCreateComponent} from './timeline-create/subject-list-create/
     StudentEditComponent,
     TimelineCreateComponent,
     SubjectListCreateComponent,
+    TimelineGroupComponent,
   ],
   imports: [
     BrowserModule,
