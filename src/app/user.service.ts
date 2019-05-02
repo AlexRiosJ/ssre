@@ -18,7 +18,7 @@ export class UserService {
                       { classRoom: 'T-204', day: 3, time: '11:00', language: 'Spanish' }]
       }]
     },
-    null, '123', 'Ing. Sistemas Computacionales'),
+    [], '123', 'Ing. Sistemas Computacionales'),
     new Student('is708932', 'Alejandro', 'Rios',
       {
         name: 'xd',
@@ -29,7 +29,7 @@ export class UserService {
                         { classRoom: 'T-204', day: 3, time: '11:00', language: 'Spanish' }]
           }]
       },
-     null, '1234', 'Ing. Sistemas Computacionales'),
+     [], '1234', 'Ing. Sistemas Computacionales'),
     new Student('is708903', 'Carlo', 'Muñoz',
     {
       name: 'xd',
@@ -40,7 +40,7 @@ export class UserService {
                       { classRoom: 'T-204', day: 3, time: '11:00', language: 'Spanish' }]
         }]
     },
-    null, '098', 'Ing. Sistemas Computacionales'),
+    [], '098', 'Ing. Sistemas Computacionales'),
   ];
   activeStudent: Student;
   userName = new Subject<string>();

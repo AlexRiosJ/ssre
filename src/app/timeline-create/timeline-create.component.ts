@@ -62,7 +62,7 @@ export class TimelineCreateComponent implements OnInit {
 
   submit(formulario: NgForm) {
     const timetableToSend = this.tempTimetable;
-    this.userService.getActiveStudent().timetables.push({name: formulario.value.id, subjects: timetableToSend});
+    this.userService.getActiveStudent().timetables.push({name: formulario.value.name, subjects: timetableToSend});
     this.tempTimetable = [];
     formulario.reset();
   }
