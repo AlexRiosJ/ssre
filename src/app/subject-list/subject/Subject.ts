@@ -1,5 +1,3 @@
-import { GroupList } from './group-list/GroupList';
-
 // TODO define subject attributes
 export class Subject {
     constructor(
@@ -8,7 +6,6 @@ export class Subject {
         public description: string,
         public credits: number,
         public area: string,
-        public department: string,
-        public groups: GroupList[]
+        public department: string
     ) {}
 }
