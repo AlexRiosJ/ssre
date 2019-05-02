@@ -23,10 +23,12 @@ export class TimelineCreateComponent implements OnInit {
     console.log(index);
     if (index === -1) {
       this.tempTimetable.push(group);
+      console.table(this.tempTimetable);
       return true;
     } else if (this.tempTimetable[index].id !== group.id) {
       this.tempTimetable.splice(index, 1);
       this.tempTimetable.push(group);
+      console.table(this.tempTimetable);
       return true;
     }
     return false;
