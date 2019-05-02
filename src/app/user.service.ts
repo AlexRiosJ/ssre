@@ -14,14 +14,15 @@ export class UserService {
   activeStudent: Student;
   userName = new Subject<string>();
 
-  constructor() { }
+  constructor() { 
+    this.activeStudent = null;
+  }
 
   getStudents(): Student[] {
     return this.students;
   }
 
   setActiveStudent(s: Student) {
-    console.log(s);
     this.activeStudent = Object.assign({}, s);
   }
 
@@ -30,7 +31,6 @@ export class UserService {
   }
 
   changeUserName() {
-    console.log(this.activeStudent)
     this.userName.next(this.activeStudent.name);
   }
 
