@@ -1,3 +1,14 @@
-<p>
-  subject works!
-</p>
+<table class="table table-bordered text-center m-0">
+  <tr>
+    <td class="code">{{subject.id}}</td>
+    <td class="subject">{{subject.name}}</td>
+    <td class="area">{{subject.area}}</td>
+    <td class="department">{{subject.department}}</td>
+    <td class="credits">{{subject.credits}}</td>
+    <td class="hrs">{{subject.credits}}</td>
+    <td class="info">
+      <button class="btn btn-info" (click)="childModal.show()">🛈</button>
+      <app-group-list #childModal [subject]="subject"></app-group-list> 
+    </td>
+  </tr>
+</table>
