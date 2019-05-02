@@ -179,7 +179,7 @@ export class SchoolService {
     }
   }
 
-  getTimetable(): Timetable {
-    return new Timetable('test', this.groups);
+  getTimetable(): GroupList[] {
+    return this.groups;
   }
 }
