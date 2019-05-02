@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupList } from '../subject-list/subject/group-list/GroupList';
-import { template } from '@angular/core/src/render3';
+import { ClassInformation } from '../subject-list/subject/group-list/ClassInformation';
 
 @Component({
   selector: 'app-timeline-create',
@@ -21,7 +21,7 @@ export class TimelineCreateComponent implements OnInit {
       return groupAux.name === group.name;
     });
     console.log(index);
-    if (index === -1) {
+    if (index === -1 && !this.groupCollides(group.classInfo)) {
       this.tempTimetable.push(group);
       console.table(this.tempTimetable);
       return true;
@@ -30,6 +30,19 @@ export class TimelineCreateComponent implements OnInit {
       this.tempTimetable.push(group);
       console.table(this.tempTimetable);
       return true;
+    }
+    return false;
+  }
+
+  groupCollides(groupClassInfo: ClassInformation[]): boolean {
+    for (const subject of this.tempTimetable) {
+      for (const classInfo of subject.classInfo) {
+        for (const currentClassInfo of groupClassInfo) {
+          if (classInfo.day == currentClassInfo.day && classInfo.time == currentClassInfo.time) {
+            return true;
+          }
+        }
+      }
     }
     return false;
   }
