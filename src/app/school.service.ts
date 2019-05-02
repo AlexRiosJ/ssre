@@ -3,6 +3,7 @@ import { Subject } from './subject-list/subject/Subject';
 import { Teacher } from './teacher/Teacher';
 import { GroupList } from './subject-list/subject/group-list/GroupList';
 import { ClassInformation } from './subject-list/subject/group-list/ClassInformation';
+import { Timetable } from './timetable/Timetable';
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +63,7 @@ export class SchoolService {
   }
 
   modifySubjectByName(nameToSearch: string, newName: string, description: string,
-    credits: number, area: string, department: string, groups: GroupList[]) {
+                      credits: number, area: string, department: string, groups: GroupList[]) {
     const subjectIndex = this.subjects.findIndex(sub => sub.name === nameToSearch);
 
     if (subjectIndex !== -1) {
@@ -176,5 +177,9 @@ export class SchoolService {
     if (teacherIndex !== -1) {
       this.teachers.splice(teacherIndex, 1);
     }
+  }
+
+  getTimetable(): Timetable {
+    return new Timetable('test', this.groups);
   }
 }
