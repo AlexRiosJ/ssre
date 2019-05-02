@@ -1,5 +1,6 @@
-import { Teacher } from 'src/app/teacher/Teacher';
+
 import { ClassInformation } from './ClassInformation';
+import { Teacher } from './../../../teacher/Teacher';
 
 export class GroupList {
     constructor(
