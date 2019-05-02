@@ -25,7 +25,6 @@ export class GroupItemComponent implements OnInit {
 
   getDay(classInfo: ClassInformation): string {
     const daysMap = ['L', 'M', 'I', 'J', 'V', 'S'] ;
-    console.log(daysMap[classInfo.day] + ': ' + classInfo.day);
     return daysMap[classInfo.day];
   }
 
