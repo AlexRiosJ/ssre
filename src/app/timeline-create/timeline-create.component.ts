@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupList } from '../subject-list/subject/group-list/GroupList';
 import { ClassInformation } from '../subject-list/subject/group-list/ClassInformation';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-timeline-create',
@@ -9,7 +10,7 @@ import { ClassInformation } from '../subject-list/subject/group-list/ClassInform
 })
 export class TimelineCreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   tempTimetable = [];
 
