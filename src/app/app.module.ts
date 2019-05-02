@@ -20,6 +20,7 @@ import { StudentEditComponent } from './student/student-edit/student-edit.compon
 import { FormsModule } from '@angular/forms';
 import { TimelineCreateComponent } from './timeline-create/timeline-create.component';
 import { SubjectListCreateComponent } from './timeline-create/subject-list-create/subject-list-create.component';
+import { TimelineGroupComponent } from './timetable/timeline-group/timeline-group/timeline-group.component';
 import { GroupListCreateComponent } from './timeline-create/subject-list-create/group-list-create/group-list-create.component';
 import { GroupItemCreateComponent } from './timeline-create/subject-list-create/group-list-create/group-item-create/group-item-create.component';
 
@@ -42,6 +43,7 @@ import { GroupItemCreateComponent } from './timeline-create/subject-list-create/
     StudentEditComponent,
     TimelineCreateComponent,
     SubjectListCreateComponent,
+    TimelineGroupComponent,
     GroupListCreateComponent,
     GroupItemCreateComponent,
   ],

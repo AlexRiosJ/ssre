@@ -177,22 +177,4 @@ export class SchoolService {
       this.teachers.splice(teacherIndex, 1);
     }
   }
-
-  createSubjectMatrix(subjects: GroupList[]) {
-    let matrix: GroupList[][];
-    matrix.length = 7;
-    for (let i = 0; i < 7; i++) {
-      matrix[i].length = 6;
-    }
-
-    const hoursMap = { '7:00': 0, '9:00': 1, '11:00': 2, '13:00': 3, '16:00': 4, '18:00': 5, '20:00': 6 };
-
-    for (const group of subjects) {
-      for (const info of group.classInfo) {
-        const hour = hoursMap[info.day];
-
-        matrix[hour][info.day] = group;
-      }
-    }
-  }
 }

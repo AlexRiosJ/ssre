@@ -56,7 +56,7 @@
         <div class="col col-lg-8">
             <div id="currentTimeTable">
                 <h5 class="text-primary">Horario actual</h5>
-                <app-timetable></app-timetable>
+                <app-timetable [groups]="userService.getActiveStudent().timetable.subjects"></app-timetable>
             </div>
             <hr>
             <div id="timeTableList">
