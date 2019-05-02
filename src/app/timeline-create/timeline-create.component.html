@@ -1,29 +1,30 @@
-  <div class="container">
-    <h1>Crear horario</h1>
-    <hr>
-    <div class="row">
-      <div class="col">
-        <p class="small">Expediente: {{userService.getActiveStudent().id}}, Alumno:
-          {{userService.getActiveStudent().lastname}}, {{userService.getActiveStudent().name}}</p>
-      </div>
-      <div class="col">
-        <p class="small">Carrera: {{userService.getActiveStudent().major}}</p>
-      </div>
-    </div>
-  </div>
+<div class="container">
+  <h1>Crear horario</h1>
   <hr>
   <div class="row">
-    <div class="col col-lg-5">
-      <div class="container">
-        <app-subject-list-create></app-subject-list-create>
-      </div>
+    <div class="col">
+      <p class="small">Expediente: {{userService.getActiveStudent().id}}, Alumno:
+        {{userService.getActiveStudent().lastname}}, {{userService.getActiveStudent().name}}</p>
     </div>
-    <div class="col col-lg-7s">
-      <div class="container">
-        <app-timetable></app-timetable>
-      </div>
+    <div class="col">
+      <p class="small">Carrera: {{userService.getActiveStudent().major}}</p>
     </div>
   </div>
-  <div class="container">
-    <button type="button" class="btn btn-primary btn-lg btn-block">Crear</button>
+</div>
+<hr>
+<div class="row">
+  <div class="col col-lg-5">
+    <div class="container">
+      <app-subject-list-create></app-subject-list-create>
+    </div>
   </div>
+  <div class="col col-lg-7s">
+    <div class="container">
+      <form #f="ngForm" (ngSubmit)="submit(f)">
+          <input class="form-control mb-2" type="text" id="inputName" ngModel name="Name" placeholder="Nombre de horario">
+          <app-timetable></app-timetable>
+          <button type="submit" class="btn btn-info btn-lg btn-block">Crear</button>
+      </form>
+    </div>
+  </div>
+</div>
