@@ -1,0 +1,190 @@
+<h5>Oferta Académica</h5>
+<hr>
+<ul class="nav nav-tabs nav-justified small">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#cu_tab">CU y SP</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#sc_tab">SC</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#ing_tab">Inglés</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#pap_tab">PAP</a>
+  </li>
+</ul>
+<div id="tabContent" class="tab-content">
+  <div class="tab-pane show active" id="cu_tab">
+    <table class="table table-bordered table-sm">
+      <thead class="table-active text-center">
+        <th class="th-sm">Es</th>
+        <th class="th-sm" style="width: 100%">Asignatura</th>
+        <th class="th-sm">Cr</th>
+        <th class="th-sm">Dept</th>
+        <th class="th-sm">..</th>
+      </thead>
+    </table>
+    <table class="table table-bordered table-sm table-fixed">
+      <tbody class="small table-sm">
+        <tr class="table" *ngFor="let subject of getSubjects()">
+          <td>{{subject.id}}</td>
+          <td>{{subject.name}}</td>
+          <td>{{subject.credits}}</td>
+          <td>{{subject.department}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab-pane" id="sc_tab">
+    <table class="table table-bordered table-sm">
+      <thead class="table-active text-center">
+        <th class="th-sm">Es</th>
+        <th class="th-sm">Ci</th>
+        <th class="th-sm" style="width: 100%">Asignatura</th>
+        <th class="th-sm">Cr</th>
+        <th class="th-sm">Ar</th>
+        <th class="th-sm">..</th>
+      </thead>
+    </table>
+    <table class="table table-bordered table-sm table-fixed">
+      <tbody class="small table-sm">
+        <tr class="table-info">
+          <td>I</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+        <tr class="table-warning">
+          <td>S</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+        <tr class="table-secondary">
+          <td>X</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+        <tr class="table-secondary">
+          <td>X</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+        <tr class="table-secondary">
+          <td>X</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab-pane" id="ing_tab">
+    <table class="table table-bordered table-sm">
+      <thead class="table-active text-center">
+        <th class="th-sm">Es</th>
+        <th class="th-sm">Ci</th>
+        <th class="th-sm" style="width: 100%">Asignatura</th>
+        <th class="th-sm">Cr</th>
+        <th class="th-sm">Ar</th>
+        <th class="th-sm">..</th>
+      </thead>
+    </table>
+    <table class="table table-bordered table-sm table-fixed">
+      <tbody class="small table-sm">
+        <tr class="table-danger">
+          <td>R</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+        <tr>
+          <td>NI</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+        <tr class="table-secondary">
+          <td>X</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+        <tr class="table-secondary">
+          <td>X</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+        <tr class="table-secondary">
+          <td>X</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab-pane" id="pap_tab">
+    <table class="table table-bordered table-sm">
+      <thead class="table-active text-center">
+        <th class="th-sm">Es</th>
+        <th class="th-sm">Ci</th>
+        <th class="th-sm" style="width: 100%">Asignatura</th>
+        <th class="th-sm">Cr</th>
+        <th class="th-sm">Ar</th>
+        <th class="th-sm">..</th>
+      </thead>
+    </table>
+    <table class="table table-bordered table-sm table-fixed">
+      <tbody class="small table-sm">
+        <tr class="table-secondary">
+          <td>X</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+        <tr class="table-secondary">
+          <td>X</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+        <tr class="table-secondary">
+          <td>X</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+        <tr class="table-secondary">
+          <td>X</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+        <tr class="table-secondary">
+          <td>X</td>
+          <td>0</td>
+          <td>Lorem ipsum dolor sit amet.</td>
+          <td>4</td>
+          <td>DEC</td>
+        </tr>
+      </tbody>
+    </table>
