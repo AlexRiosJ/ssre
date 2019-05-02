@@ -1,16 +1,11 @@
 <table class="table table-bordered text-center m-0">
   <tr colspan="5">
-    <td class="group" rowspan="5">ESI3140B</td>
-    <td class="teacher" rowspan="5">SALDAÑA ZEPEDA PEDRO AARON</td>
+    <td class="group" rowspan="5">{{group.id}}</td>
+    <td class="teacher" rowspan="5">{{group.teacher.lastname + ' ' + group.teacher.name}}</td>
   </tr>
-  <tr id="">
-    <td class="classroom">C-103</td>
-    <td class="class-time">M 7:00 - 9:00</td>
-    <td class="language">Español</td>
-  </tr>
-  <tr id="">
-    <td class="classroom">T-MEZZANINE1</td>
-    <td class="class-time">V 7:00 - 9:00</td>
-    <td class="language">Español</td>
+  <tr id="" *ngFor="let info of group.classInfo">
+    <td class="classroom">{{info.classRoom}}</td>
+    <td class="class-time">{{getDay(info) + ' ' + getTime(info)}}</td>
+    <td class="language">{{info.language}}</td>
   </tr>
 </table>
