@@ -14,4 +14,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  remove(name: string) {
+    const index = this.userService.getActiveStudent().timetables.findIndex(timetable => timetable.name === name);
+    this.userService.getActiveStudent().timetables.splice(index, 1);
+  }
+
 }

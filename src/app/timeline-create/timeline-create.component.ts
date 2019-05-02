@@ -13,21 +13,20 @@ export class TimelineCreateComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
-  tempTimetable = [];
+  public tempTimetable: GroupList[] = [];
 
   ngOnInit() {
+    console.log(this.tempTimetable);
   }
 
   addToTimetable(group: GroupList): boolean {
-    const index = this.tempTimetable.findIndex(groupAux => {
-      return groupAux.name === group.name;
-    });
+    const index = this.tempTimetable.findIndex(groupAux => groupAux.name === group.name);
     console.log(index);
     if (index === -1 && !this.groupCollides(group.classInfo)) {
       this.tempTimetable.push(group);
       console.table(this.tempTimetable);
       return true;
-    } else if (this.tempTimetable[index].id !== group.id) {
+    } else if (index >= 0 && this.tempTimetable[index].id !== group.id) {
       this.tempTimetable.splice(index, 1);
       this.tempTimetable.push(group);
       console.table(this.tempTimetable);
@@ -62,7 +61,11 @@ export class TimelineCreateComponent implements OnInit {
 
   submit(formulario: NgForm) {
     const timetableToSend = this.tempTimetable;
-    this.userService.getActiveStudent().timetables.push({name: formulario.value.name, subjects: timetableToSend});
+    const index = this.userService.getActiveStudent().timetables.findIndex(timetable => timetable.name === formulario.value.name);
+    if (index === -1 && formulario.value.name !== '' && formulario.value.name !== null) {
+      console.log(formulario.value.name);
+      this.userService.getActiveStudent().timetables.push({ name: formulario.value.name, subjects: timetableToSend });
+    }
     this.tempTimetable = [];
     formulario.reset();
   }

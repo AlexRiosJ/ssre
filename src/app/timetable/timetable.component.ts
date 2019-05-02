@@ -29,13 +29,15 @@ export class TimetableComponent implements OnInit {
 
     const hoursMap = { '7:00': 0, '9:00': 1, '11:00': 2, '13:00': 3, '15:00': 4, '16:00': 5, '18:00': 6, '20:00': 7 };
 
-    for (const group of this.groups) {
-      for (const info of group.classInfo) {
-        const hour = hoursMap[info.time];
-        console.log(typeof info.day);
+    if (this.groups !== undefined) {
+      for (const group of this.groups) {
+        for (const info of group.classInfo) {
+          const hour = hoursMap[info.time];
+          console.log(typeof info.day);
 
-        this.colorsOfSubjects[hour][Number(info.day)] = colors[group.id % 7];
-        this.subjectMatrix[hour][Number(info.day)] = group;
+          this.colorsOfSubjects[hour][Number(info.day)] = colors[group.id % 7];
+          this.subjectMatrix[hour][Number(info.day)] = group;
+        }
       }
     }
   }
