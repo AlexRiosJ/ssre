@@ -60,7 +60,7 @@
                 <app-timetable [groups]="schoolService.getTimetable()"></app-timetable>
             </div>
             <hr>
-            <div id="timeTableList">
+            <div id="timeTableList" *ngIf="userService.getActiveStudent().timetables">
                 <h5 class="text-primary">Lista de opciones</h5>
                 <div *ngFor="let timeTable of userService.getActiveStudent().timetables">
                     <h6 class="muted-text"> {{timeTable.name}} </h6>
