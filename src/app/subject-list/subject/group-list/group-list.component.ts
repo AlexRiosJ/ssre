@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
+import { Subject } from '../Subject';
 
 @Component({
   selector: 'app-group-list',
@@ -7,17 +8,19 @@ import { ModalDirective } from 'ngx-bootstrap';
   styleUrls: ['./group-list.component.css']
 })
 export class GroupListComponent implements OnInit {
-  @ViewChild('childModal') public childModal:ModalDirective;
+  @ViewChild('childModal') public childModal: ModalDirective;
   constructor() { }
+
+  @Input() subject: Subject;
 
   ngOnInit() {
   }
 
-  show(){
+  show() {
     this.childModal.show();
   }
 
-  hide(){
+  hide() {
     this.childModal.hide();
   }
 

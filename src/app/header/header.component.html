@@ -8,7 +8,7 @@
     </button>
 
     <div class="navbar-collapse collapse" id="navbar-main">
-        <form class="form-inline mr-4 my-lg-0">
+        <form class="form-inline mr-4 my-lg-0" *ngIf="isLoggedIn">
             <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
         </form>
@@ -24,7 +24,7 @@
         <ul class="navbar-nav">
             <li class="nav-item dropdown" *ngIf="isLoggedIn">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="dropdown-user"
-                    aria-expanded="false">Username
+                    aria-expanded="false">{{username}}
                     <span class="dropdown-caret"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown-user">

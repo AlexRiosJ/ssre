@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { SchoolService } from '../school.service';
+import { Subscription } from 'rxjs';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +10,28 @@ import { SchoolService } from '../school.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  private subscript: Subscription;
   isLoggedIn: boolean;
-  
-  constructor(auth: AuthService) {
-    this.isLoggedIn = auth.isAuthenticated();
+  username: string;
+
+  constructor(private auth: AuthService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
+    this.subscript = this.auth.isLoggedIn
+      .subscribe(
+        (value) => {
+           this.isLoggedIn = value;
+        }
+      );
+    this.subscript = this.userService.userName
+      .subscribe(
+        (value) => {
+           this.username = value;
+        }
+      );
   }
+
 
 }
