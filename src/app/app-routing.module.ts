@@ -8,6 +8,7 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
 import { StudentComponent } from './student/student.component';
 import { LoginComponent } from './login/login.component';
 import { StudentEditComponent } from './student/student-edit/student-edit.component';
+import { TimelineCreateComponent } from './timeline-create/timeline-create.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuardService]},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'preferences', component: StudentComponent, canActivate: [AuthGuardService]},
   {path: 'login', component: LoginComponent},
   {path: 'signin', component: StudentEditComponent} // This component will have children
+  {path: 'create', component: TimelineCreateComponent}
 ];
 
 @NgModule({
