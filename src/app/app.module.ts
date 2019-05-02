@@ -16,7 +16,9 @@ import { TeacherComponent } from './teacher/teacher.component';
 import { GroupListComponent } from './subject-list/subject/group-list/group-list.component';
 import { GroupItemComponent } from './subject-list/subject/group-list/group-item/group-item.component';
 import { TimelineCreateComponent } from './timeline-create/timeline-create.component';
-import {SubjectListCreateComponent} from './timeline-create/subject-list-create/subject-list-create.component';
+import { SubjectListCreateComponent } from './timeline-create/subject-list-create/subject-list-create.component';
+import { GroupListCreateComponent } from './timeline-create/subject-list-create/group-list-create/group-list-create.component';
+import { GroupItemCreateComponent } from './timeline-create/subject-list-create/group-list-create/group-item-create/group-item-create.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import {SubjectListCreateComponent} from './timeline-create/subject-list-create/
     GroupItemComponent,
     TimelineCreateComponent,
     SubjectListCreateComponent,
+    GroupListCreateComponent,
+    GroupItemCreateComponent,
   ],
   imports: [
     BrowserModule,
