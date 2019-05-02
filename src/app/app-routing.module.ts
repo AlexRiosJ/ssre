@@ -16,11 +16,11 @@ const routes: Routes = [
   {path: 'landing', component: LandingComponent},
   {path: 'about', component: AboutComponent},
   {path: 'subjects', component: SubjectListComponent, canActivate: [AuthGuardService]},
+  {path: 'preferences', component: StudentComponent, canActivate: [AuthGuardService]},
   {path: 'login', component: LoginComponent},
   {path: 'signin', component: StudentEditComponent, children: [
     {path: '', component: StudentEditComponent},
-    {path: ':id', component: StudentComponent, canActivate: [AuthGuardService]},
-    {path: ':id/edit', component: StudentEditComponent, canActivate: [AuthGuardService]},
+    {path: ':id', component: StudentEditComponent, canActivate: [AuthGuardService]},
   ]
   }, // This component will have children
   {path: 'create', component: TimelineCreateComponent, canActivate: [AuthGuardService]},
