@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
     const studentAux = this.userService.getStudents().find(s => s.id.toUpperCase() === formulario.value.id.toUpperCase());
     if (studentAux) {
       if (studentAux.password.toUpperCase() === formulario.value.password.toUpperCase()) {
-        this.authService.login();
         this.userService.setActiveStudent(studentAux);
+        this.authService.login();
       }
     } else {
       alert('wrong user or password');

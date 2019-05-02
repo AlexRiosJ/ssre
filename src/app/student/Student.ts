@@ -6,7 +6,9 @@ export class Student {
         public id: string, //Expediente
         public name: string,
         public lastname: string,
-        public timetable: Timetable,
+        public currentTimetable: Timetable,
+        public timetables: Timetable[],
         public password: string,
+        public major: string,
     ) {}
 }

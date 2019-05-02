@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col col-lg-4">
             <div id="userProfile">
-                <h5 class="text-primary">Hola (nombre de usuario)</h5>
+                <h5 class="text-primary">Hola {{userService.getActiveStudent().name}}</h5>
                 <br>
                 <h6 class="text-primary">Carrera:</h6>
-                <h6 class="text-success">Ing. Sistemas Computacionales</h6>
+                <h6 class="text-success">{{userService.getActiveStudent().major}}</h6>
             </div>
             <hr>
             <button id="btnNewTimeTable" type="button" class="btn btn-outline-primary btn-block" routerLink="/create">Crear nuevo
@@ -36,35 +36,6 @@
                 <span class="badge badge-pill badge-warning mx-1 px-2">20 de 40</span>
             </div>
             <hr>
-            <div id="payments">
-                <h6 class="text-primary">Mensualidades Corto Plazo</h6>
-                <table class="table table-bordered table-striped table-sm">
-                    <thead>
-                        <tr class="table-active">
-                            <th>Fecha límite de pago</th>
-                            <th>Importe</th>
-                            <th>Moneda</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>10/03/2019</td>
-                            <td>8,422.18</td>
-                            <td>Peso</td>
-                        </tr>
-                        <tr>
-                            <td>10/04/2019</td>
-                            <td>8,422.18</td>
-                            <td>Peso</td>
-                        </tr>
-                        <tr>
-                            <td>08/05/2019</td>
-                            <td>8,422.18</td>
-                            <td>Peso</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
             <!-- 
                 TODO: Define if this section should be here. There is already a section with this info
             <hr>
