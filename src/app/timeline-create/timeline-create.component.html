@@ -22,7 +22,7 @@
     <div class="container">
       <form #f="ngForm" (ngSubmit)="submit(f)">
           <input class="form-control mb-2" type="text" id="inputName" ngModel name="name" placeholder="Nombre de horario">
-          <app-timetable></app-timetable>
+          <app-timetable [groups]="tempTimetable"></app-timetable>
           <button type="submit" class="btn btn-info btn-lg btn-block">Crear</button>
       </form>
     </div>
