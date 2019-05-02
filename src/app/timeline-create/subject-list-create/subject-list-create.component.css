@@ -1,0 +1,9 @@
+.table-fixed tbody {
+    height: 230px;
+    overflow-y: auto;
+    display: block;
+}
+
+.table-fixed td:nth-child(3) {
+    width: 100%;
+}
