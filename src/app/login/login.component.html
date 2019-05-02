@@ -1,0 +1,55 @@
+
+<div class="container col-lg-5 mt-3">
+    <div class="card card-body">
+        <h3>Inicia sesión</h3>
+        <hr>
+        <form #f="ngForm" (ngSubmit)="submit(f)">
+            <div class="form-group">
+                <label for="inputId">Expediente</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="inputId" 
+                    ngModel 
+                    name="id" 
+                    aria-describedby="idHelp"/>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Contraseña</label>
+                <input 
+                    type="password" 
+                    class="form-control input-normal" 
+                    ngModel 
+                    name="password" 
+                    id="inputPassword"
+                    aria-describedby="passwordHelp">
+                    <!-- TODO: create code to recover password -->
+                <!-- <a href="#" data-toggle="modal" data-target="#pswModal">¿Olvidaste tu contraseña?</a> -->
+            </div>
+            <button type="submit" class="btn btn-primary">INGRESAR</button>
+        </form>
+    </div>
+    <div class="text-center mt-3">
+        ¿Eres nuevo? <span><a href="" routerLinkActive="active" routerLink="/signin">Crea una cuenta</a></span>
+    </div>
+</div>
+    
+    <div class="modal" id="pswModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reinicia tu contraseña</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Ingresa tu correo electrónico y enviaremos un link para reiniciar tu contraseña.</p>
+                    <input type="email" class="form-control input-normal" id="inputEmailReset">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Enviar correo de reinicio de contraseña</button>
+                </div>
+            </div>
+        </div>
+    </div>
