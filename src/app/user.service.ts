@@ -8,9 +8,39 @@ import { Subject } from 'rxjs';
 })
 export class UserService {
   students: Student[] = [
-    new Student('is703358', 'Carmen', 'Martinez', null, null, '123', 'Ing. Sistemas Computacionales'),
-    new Student('is708932', 'Alejandro', 'Rios', null, null, '1234', 'Ing. Sistemas Computacionales'),
-    new Student('is708903', 'Carlo', 'Muñoz', null, null, '098', 'Ing. Sistemas Computacionales'),
+    new Student('is703358', 'Carmen', 'Martinez',
+    {
+      name: 'xd',
+      subjects: [
+      { id: 2, name: 'Arqui', teacher: 
+                                  { id: 0, name: 'Johan', lastname: 'Perez' },
+          classInfo: [{ classRoom: 'D-116', day: 2, time: '11:00', language: 'Spanish' },
+                      { classRoom: 'T-204', day: 3, time: '11:00', language: 'Spanish' }]
+      }]
+    },
+    null, '123', 'Ing. Sistemas Computacionales'),
+    new Student('is708932', 'Alejandro', 'Rios',
+      {
+        name: 'xd',
+        subjects: [
+          { id: 2, name: 'Arqui', teacher:
+                                    { id: 0, name: 'Johan', lastname: 'Perez' },
+            classInfo: [{ classRoom: 'D-116', day: 2, time: '11:00', language: 'Spanish' },
+                        { classRoom: 'T-204', day: 3, time: '11:00', language: 'Spanish' }]
+          }]
+      },
+     null, '1234', 'Ing. Sistemas Computacionales'),
+    new Student('is708903', 'Carlo', 'Muñoz',
+    {
+      name: 'xd',
+      subjects: [
+        { id: 2, name: 'Arqui', teacher: 
+                                  { id: 0, name: 'Johan', lastname: 'Perez' },
+          classInfo: [{ classRoom: 'D-116', day: 2, time: '11:00', language: 'Spanish' },
+                      { classRoom: 'T-204', day: 3, time: '11:00', language: 'Spanish' }]
+        }]
+    },
+    null, '098', 'Ing. Sistemas Computacionales'),
   ];
   activeStudent: Student;
   userName = new Subject<string>();
