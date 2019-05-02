@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SchoolService } from '../school.service';
+import { Subject } from './subject/Subject';
 
 @Component({
   selector: 'app-subject-list',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubjectListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private schoolService: SchoolService) { }
 
   ngOnInit() {
   }
 
+  getSubjects(): Subject[] {
+    return this.schoolService.allSubjects;
+  }
 }
