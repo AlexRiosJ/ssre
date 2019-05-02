@@ -8,8 +8,9 @@ import { Subject } from 'rxjs';
 })
 export class UserService {
   students: Student[] = [
-    new Student('is703358', 'Carmen', 'Martinez', null, '123'),
-    new Student('is1234', 'Mariana', 'Sierra', null, '234')
+    new Student('is703358', 'Carmen', 'Martinez', null, null, '123', 'Ing. Sistemas Computacionales'),
+    new Student('is708932', 'Alejandro', 'Rios', null, null, '1234', 'Ing. Sistemas Computacionales'),
+    new Student('is708903', 'Carlo', 'Muñoz', null, null, '098', 'Ing. Sistemas Computacionales'),
   ];
   activeStudent: Student;
   userName = new Subject<string>();
