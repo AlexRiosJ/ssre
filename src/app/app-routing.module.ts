@@ -12,13 +12,13 @@ import { TimelineCreateComponent } from './timeline-create/timeline-create.compo
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuardService]},
-  {path: 'home', component: HomeComponent,  canActivate: [AuthGuardService] },
+  {path: 'home', component: HomeComponent/*,  canActivate: [AuthGuardService] */},
   {path: 'landing', component: LandingComponent},
   {path: 'about', component: AboutComponent},
   {path: 'subjects', component: SubjectListComponent, canActivate: [AuthGuardService]},
   {path: 'preferences', component: StudentComponent, canActivate: [AuthGuardService]},
   {path: 'login', component: LoginComponent},
-  {path: 'signin', component: StudentEditComponent} // This component will have children
+  {path: 'signin', component: StudentEditComponent}, // This component will have children
   {path: 'create', component: TimelineCreateComponent}
 ];
 
