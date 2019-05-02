@@ -3,10 +3,11 @@
     <hr>
     <div class="row">
       <div class="col">
-        <p class="small">Expediente: 708932, Alumno: RIOS JASSO ALEJANDRO</p>
+        <p class="small">Expediente: {{userService.getActiveStudent().id}}, Alumno:
+          {{userService.getActiveStudent().lastname}}, {{userService.getActiveStudent().name}}</p>
       </div>
       <div class="col">
-        <p class="small">Carrera: INGENIERIA EN SISTEMAS COMPUTACIONALES</p>
+        <p class="small">Carrera: {{userService.getActiveStudent().major}}</p>
       </div>
     </div>
   </div>
