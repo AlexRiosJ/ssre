@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input, Output } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
-import { Subject } from 'src/app/subject-list/subject/Subject';
-import { GroupList } from 'src/app/subject-list/subject/group-list/GroupList';
+import { Subject } from '../../../subject-list/subject/Subject';
+import { GroupList } from '../../../subject-list/subject/group-list/GroupList';
 import { TimelineCreateComponent } from '../../timeline-create.component';
 
 @Component({

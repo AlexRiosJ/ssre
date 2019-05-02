@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SchoolService } from 'src/app/school.service';
-import { Subject } from 'src/app/subject-list/subject/Subject';
+import { SchoolService } from '../../school.service';
+import { Subject } from '../../subject-list/subject/Subject';
 import { GroupListCreateComponent } from './group-list-create/group-list-create.component';
 
 @Component({

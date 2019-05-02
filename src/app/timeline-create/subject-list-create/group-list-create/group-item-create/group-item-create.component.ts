@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { GroupList } from 'src/app/subject-list/subject/group-list/GroupList';
-import { ClassInformation } from 'src/app/subject-list/subject/group-list/ClassInformation';
+import { GroupList } from '../../../../subject-list/subject/group-list/GroupList';
+import { ClassInformation } from '../../../../subject-list/subject/group-list/ClassInformation';
 
 @Component({
   selector: 'app-group-item-create',
