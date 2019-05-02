@@ -18,71 +18,44 @@
   <div class="tab-pane show active" id="cu_tab">
     <table class="table table-bordered table-sm">
       <thead class="table-active text-center">
-        <th class="th-sm">Es</th>
-        <th class="th-sm" style="width: 100%">Asignatura</th>
+        <th class="th-sm" style="width: 20%">ID</th>
         <th class="th-sm">Cr</th>
+        <th class="th-sm" style="width: 100%">Asignatura</th>
         <th class="th-sm">Dept</th>
         <th class="th-sm">..</th>
       </thead>
     </table>
-    <table class="table table-bordered table-sm table-fixed">
+    <table class="table table-bordered table-sm table-fixed table-hover">
       <tbody class="small table-sm">
         <tr class="table" *ngFor="let subject of getSubjects()">
-          <td>{{subject.id}}</td>
-          <td>{{subject.name}}</td>
-          <td>{{subject.credits}}</td>
-          <td>{{subject.department}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'CU' || subject.area === 'SP'" style="width: 20%">{{subject.id}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'CU' || subject.area === 'SP'">{{subject.credits}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'CU' || subject.area === 'SP'" style="width: 100%">{{subject.name}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'CU' || subject.area === 'SP'">{{subject.department}}</td>
+          <app-group-list-create #childModal [subject]="subject"></app-group-list-create>
         </tr>
       </tbody>
     </table>
   </div>
+
   <div class="tab-pane" id="sc_tab">
     <table class="table table-bordered table-sm">
       <thead class="table-active text-center">
-        <th class="th-sm">Es</th>
-        <th class="th-sm">Ci</th>
-        <th class="th-sm" style="width: 100%">Asignatura</th>
+        <th class="th-sm" style="width: 20%">ID</th>
         <th class="th-sm">Cr</th>
-        <th class="th-sm">Ar</th>
+        <th class="th-sm" style="width: 100%">Asignatura</th>
+        <th class="th-sm">Dept</th>
         <th class="th-sm">..</th>
       </thead>
     </table>
-    <table class="table table-bordered table-sm table-fixed">
+    <table class="table table-bordered table-sm table-fixed table-hover">
       <tbody class="small table-sm">
-        <tr class="table-info">
-          <td>I</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
-        </tr>
-        <tr class="table-warning">
-          <td>S</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
-        </tr>
-        <tr class="table-secondary">
-          <td>X</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
-        </tr>
-        <tr class="table-secondary">
-          <td>X</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
-        </tr>
-        <tr class="table-secondary">
-          <td>X</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
+        <tr class="table" *ngFor="let subject of getSubjects()">
+          <td (click)="childModal.show()" *ngIf="subject.area === 'SC'" style="width: 20%">{{subject.id}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'SC'">{{subject.credits}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'SC'" style="width: 100%">{{subject.name}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'SC'">{{subject.department}}</td>
+          <app-group-list-create #childModal [subject]="subject"></app-group-list-create>
         </tr>
       </tbody>
     </table>
@@ -90,50 +63,21 @@
   <div class="tab-pane" id="ing_tab">
     <table class="table table-bordered table-sm">
       <thead class="table-active text-center">
-        <th class="th-sm">Es</th>
-        <th class="th-sm">Ci</th>
-        <th class="th-sm" style="width: 100%">Asignatura</th>
+        <th class="th-sm" style="width: 20%">ID</th>
         <th class="th-sm">Cr</th>
-        <th class="th-sm">Ar</th>
+        <th class="th-sm" style="width: 100%">Asignatura</th>
+        <th class="th-sm">Dept</th>
         <th class="th-sm">..</th>
       </thead>
     </table>
-    <table class="table table-bordered table-sm table-fixed">
+    <table class="table table-bordered table-sm table-fixed table-hover">
       <tbody class="small table-sm">
-        <tr class="table-danger">
-          <td>R</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
-        </tr>
-        <tr>
-          <td>NI</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
-        </tr>
-        <tr class="table-secondary">
-          <td>X</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
-        </tr>
-        <tr class="table-secondary">
-          <td>X</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
-        </tr>
-        <tr class="table-secondary">
-          <td>X</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
+        <tr class="table" *ngFor="let subject of getSubjects()">
+          <td (click)="childModal.show()" *ngIf="subject.area === 'ING'" style="width: 20%">{{subject.id}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'ING'">{{subject.credits}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'ING'" style="width: 100%">{{subject.name}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'ING'">{{subject.department}}</td>
+          <app-group-list-create #childModal [subject]="subject"></app-group-list-create>
         </tr>
       </tbody>
     </table>
@@ -141,50 +85,23 @@
   <div class="tab-pane" id="pap_tab">
     <table class="table table-bordered table-sm">
       <thead class="table-active text-center">
-        <th class="th-sm">Es</th>
-        <th class="th-sm">Ci</th>
-        <th class="th-sm" style="width: 100%">Asignatura</th>
+        <th class="th-sm" style="width: 20%">ID</th>
         <th class="th-sm">Cr</th>
-        <th class="th-sm">Ar</th>
+        <th class="th-sm" style="width: 100%">Asignatura</th>
+        <th class="th-sm">Dept</th>
         <th class="th-sm">..</th>
       </thead>
     </table>
-    <table class="table table-bordered table-sm table-fixed">
+    <table class="table table-bordered table-sm table-fixed table-hover">
       <tbody class="small table-sm">
-        <tr class="table-secondary">
-          <td>X</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
-        </tr>
-        <tr class="table-secondary">
-          <td>X</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
-        </tr>
-        <tr class="table-secondary">
-          <td>X</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
-        </tr>
-        <tr class="table-secondary">
-          <td>X</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
-        </tr>
-        <tr class="table-secondary">
-          <td>X</td>
-          <td>0</td>
-          <td>Lorem ipsum dolor sit amet.</td>
-          <td>4</td>
-          <td>DEC</td>
+        <tr class="table" *ngFor="let subject of getSubjects()">
+          <td (click)="childModal.show()" *ngIf="subject.area === 'PAP'" style="width: 20%">{{subject.id}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'PAP'">{{subject.credits}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'PAP'" style="width: 100%">{{subject.name}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'PAP'">{{subject.department}}</td>
+          <app-group-list-create #childModal [subject]="subject"></app-group-list-create>
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
