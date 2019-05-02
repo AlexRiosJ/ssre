@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GroupList } from 'src/app/subject-list/subject/group-list/GroupList';
+import { GroupList } from '../../../subject-list/subject/group-list//GroupList';
 
 @Component({
   selector: 'app-timeline-group',
