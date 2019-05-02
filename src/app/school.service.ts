@@ -44,7 +44,7 @@ export class SchoolService {
     let id = 0;
     if (this.subjects.length > 0) { id = this.subjects[this.subjects.length - 1].id + 1; }
 
-    const newSubject = new Subject(id, code, name, description, credits, area, department, groups);
+    const newSubject = new Subject(id, name, description, credits, area, department, groups);
     this.subjects.push(newSubject);
   }
 
