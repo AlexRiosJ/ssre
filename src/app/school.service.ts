@@ -15,6 +15,7 @@ export class SchoolService {
 
   constructor() {
 
+
     const requestURL = 'https://api.myjson.com/bins/14uagg';
     const request = new XMLHttpRequest();
     request.open('GET', requestURL);
@@ -27,7 +28,7 @@ export class SchoolService {
       self.allSubjects = subjects;
 
       for (const subject of subjects) {
-        self.addSubject(subject.name, subject.description, subject.credits, subject.area, subject.department, subject.groups);
+        self.addSubject(subject.code, subject.name, subject.description, subject.credits, subject.area, subject.department, subject.groups);
         for (const group of subject.groups) {
           self.addGroup(group.name, group.teacher, group.classInfo);
         }
@@ -36,15 +37,10 @@ export class SchoolService {
       for (const group of self.groups) {
         self.addTeacher(group.teacher.name, group.teacher.lastname);
       }
-
-      self.addTeacher('Hugo', 'Piza');
-      self.modifyTeacherByName('Hugo', 'Piza', 'Luis', 'Gatica');
-      self.deleteTeacherByName('Luis', 'Gatica');
-      console.log(self.teachers);
     };
   }
 
-  addSubject(name: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
+  addSubject(code: string, name: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
     let id = 0;
     if (this.subjects.length > 0) { id = this.subjects[this.subjects.length - 1].id + 1; }
 
@@ -66,7 +62,7 @@ export class SchoolService {
   }
 
   modifySubjectByName(nameToSearch: string, newName: string, description: string,
-                      credits: number, area: string, department: string, groups: GroupList[]) {
+    credits: number, area: string, department: string, groups: GroupList[]) {
     const subjectIndex = this.subjects.findIndex(sub => sub.name === nameToSearch);
 
     if (subjectIndex !== -1) {
