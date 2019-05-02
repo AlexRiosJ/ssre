@@ -6,6 +6,7 @@ export class Subject {
         public description: string,
         public credits: number,
         public area: string,
-        public department: string
+        public department: string,
+        public groups: GroupList[]
     ) {}
 }
