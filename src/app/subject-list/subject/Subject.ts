@@ -1,3 +1,5 @@
+import { GroupList } from './group-list/GroupList';
+
 // TODO define subject attributes
 export class Subject {
     constructor(
