@@ -18,8 +18,12 @@ const routes: Routes = [
   {path: 'subjects', component: SubjectListComponent, canActivate: [AuthGuardService]},
   {path: 'preferences', component: StudentComponent, canActivate: [AuthGuardService]},
   {path: 'login', component: LoginComponent},
-  {path: 'signin', component: StudentEditComponent}, // This component will have children
-  {path: 'create', component: TimelineCreateComponent},
+  {path: 'signin', component: StudentEditComponent, children: [
+    {path: '', component: StudentEditComponent},
+    {path: ':id', component: StudentEditComponent, canActivate: [AuthGuardService]},
+  ]
+  }, // This component will have children
+  {path: 'create', component: TimelineCreateComponent, canActivate: [AuthGuardService]},
 ];
 
 @NgModule({
