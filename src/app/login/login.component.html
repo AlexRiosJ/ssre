@@ -1,5 +1,9 @@
 
 <div class="container col-lg-5 mt-3">
+    <div *ngIf="invalidEntry" class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert" (click)="invalidEntry = false">&times;</button>
+            <span>Expediente o contraseña incorrectos.</span>
+    </div>
     <div class="card card-body">
         <h3>Inicia sesión</h3>
         <hr>
