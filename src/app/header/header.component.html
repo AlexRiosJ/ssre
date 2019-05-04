@@ -14,9 +14,14 @@
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
                 </form> -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active" routerLinkActive="active">
-                    <a class="nav-link" href="" routerLink="/home">Inicio <span class="sr-only">(current)</span></a>
+                <!-- Same HOME link but different router link in log -->
+                <li class="nav-item" routerLinkActive="active" *ngIf="!isLoggedIn">
+                    <a class="nav-link" href="" routerLink="/landing">Inicio</a>
                 </li>
+                <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
+                    <a class="nav-link" href="" routerLink="/home">Inicio</a>
+                </li>
+                
                 <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
                     <a class="nav-link" href="" routerLink="/subjects">Asignaturas</a>
                 </li>
