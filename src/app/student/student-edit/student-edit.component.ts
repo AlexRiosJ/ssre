@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Student } from '../Student';
-import { UserService } from 'src/app/user.service';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-student-edit',
