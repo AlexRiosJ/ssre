@@ -39,7 +39,7 @@ export class StudentEditComponent implements OnInit {
         alert('Las contraseñas deben coincidir');
         form.reset();
       } else {
-        this.userService.setActiveStudent(this.student);
+        this.userService.setActiveStudent(Object.assign ({}, this.student));
         this.authService.login();
         this.router.navigate(['/home'], {relativeTo: this.route});
 
