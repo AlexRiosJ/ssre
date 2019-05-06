@@ -1,62 +1,89 @@
 <div class="container col-lg-5 mt-3 mb-3">
     <div class="card card-body">
-        <form action="return false;">
+        <form #f="ngForm" (ngSubmit)="submit(f)">
             <fieldset>
                 <h3>Registro</h3>
                 <hr>
-                <div class="form-group row" id="nombres">
+                <div class="form-group row" id="fullName">
                     <div class="col-sm-6">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
+                        <label for="sName">Nombre</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            ngModel 
+                            [(ngModel)]="student.name"
+                            name="sName" 
+                            id="sName" 
+                            placeholder="Ingresa tu nombre"
+                            required>
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="apellidos">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos" placeholder="Ingresa tus apellidos">
+                        <label for="lastname">Apellidos</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            ngModel 
+                            [(ngModel)]="student.lastname"
+                            name="lastname" 
+                            id="lastname" 
+                            placeholder="Ingresa tus apellidos"
+                            required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Correo</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                        placeholder="Ingresa tu correo">
-                </div>
-
-                <div class="form-group">
-                    <label for="usuario">Usuario</label>
-                    <input type="text" class="form-control" id="usuario" aria-describedby="emailHelp"
-                        placeholder="Ingresa tu nombre de usuario">
-                </div>
-
-                <div class="form-group">
-                    <label for="expediente">Expediente</label>
-                    <input type="number" class="form-control" id="expediente" aria-describedby="emailHelp"
-                        placeholder="Ingresa tu expediente">
+                    <label for="id">Expediente</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        ngModel 
+                        [(ngModel)]="student.id"
+                        name="id" 
+                        id="id" 
+                        placeholder="Ingresa tu expediente"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label for="carrera">Escoge tu carrera</label>
-                    <select class="form-control" id="carrera">
-                        <option value="1">Ing. en Sistemas</option>
-                        <option value="2">Ing. en Electronica</option>
-                        <option value="3">Psicología</option>
-                        <option value="4">Derecho</option>
-                        <option value="5">Administración de empresas</option>
+                    <select 
+                        class="form-control"
+                        ngModel
+                        [(ngModel)]="student.major"
+                        id="majorList"
+                        name="majorList"  >
+                        <option *ngFor="let major of majorList" > 
+                            {{ major }}
+                        </option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="contraseña">Contraseña</label>
-                    <input type="password" class="form-control" id="contraseña" aria-describedby="emailHelp"
-                        placeholder="Ingresa tu contraseña">
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        ngModel 
+                        [(ngModel)]="student.password"
+                        name="password" 
+                        id="password" 
+                        placeholder="Ingresa tu contraseña"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label for="contraseña-2">Vuelve a ingresar tu contraseña</label>
-                    <input type="password" class="form-control" id="contraseña-2" aria-describedby="emailHelp"
-                        placeholder="Vuelve a ingresa tu contraseña">
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        ngModel
+                        name="confirmPassword" 
+                        id="confirmPassword" 
+                        placeholder="Vuelve a ingresa tu contraseña"
+                        required>
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Enviar</button>
             </fieldset>
         </form>
     </div>
