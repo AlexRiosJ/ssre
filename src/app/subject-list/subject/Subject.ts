@@ -3,7 +3,7 @@ import { GroupList } from './group-list/GroupList';
 // TODO define subject attributes
 export class Subject {
     constructor(
-        public id: number,
+        public id: string,
         public name: string,
         public description: string,
         public credits: number,

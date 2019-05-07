@@ -13,7 +13,7 @@ export class TimelineCreateComponent implements OnInit {
 
   public tempTimetable: GroupList[] = [];
   noNameInTimetable = false;
-  
+
   constructor(private userService: UserService) { }
 
   ngOnInit() {
@@ -49,9 +49,7 @@ export class TimelineCreateComponent implements OnInit {
   }
 
   removeToTimetable(group: GroupList): GroupList {
-    const index = this.tempTimetable.findIndex(groupAux => {
-      return groupAux.id === group.id;
-    });
+    const index = this.tempTimetable.findIndex(groupAux => groupAux.id === group.id);
     if (index >= 0) {
       this.tempTimetable.splice(index, 1);
       return group;

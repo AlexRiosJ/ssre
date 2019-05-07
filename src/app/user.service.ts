@@ -9,43 +9,91 @@ import { Subject } from 'rxjs';
 export class UserService {
   students: Student[] = [
     new Student('is703358', 'Carmen', 'Martinez',
-    {
-      name: 'xd',
-      subjects: [
-      { id: 2, name: 'Arqui', teacher: 
-                                  { id: 0, name: 'Johan', lastname: 'Perez' },
-          classInfo: [{ classRoom: 'D-116', day: 2, time: '11:00', language: 'Spanish' },
-                      { classRoom: 'T-204', day: 3, time: '11:00', language: 'Spanish' }]
-      }]
-    },
-    [], '123', 'Ing. Sistemas Computacionales'),
-    new Student('is708932', 'Alejandro', 'Rios',
       {
-        name: 'xd',
+        name: 'Horario actual',
         subjects: [
-          { id: 2, name: 'Arqui', teacher:
-                                    { id: 0, name: 'Johan', lastname: 'Perez' },
-            classInfo: [{ classRoom: 'D-116', day: 2, time: '11:00', language: 'Spanish' },
-                        { classRoom: 'T-204', day: 3, time: '11:00', language: 'Spanish' }]
+          {
+
+            id: 'ESI1018N',
+            name: 'Desarrollo de Aplicaciones y Servicios Web',
+            teacher: {
+              id: 0,
+              name: 'Luis Fernando',
+              lastname: 'Gutierrez Preciado'
+            },
+            classInfo: [{
+              classRoom: 'T-202',
+              day: '0',
+              time: '11:00',
+              language: 'Español'
+            }, {
+              classRoom: 'T-202',
+              day: '2',
+              time: '11:00',
+              language: 'Español'
+            }]
           }]
       },
-     [], '1234', 'Ing. Sistemas Computacionales'),
+      [], '123', 'Ing. Sistemas Computacionales'),
+    new Student('is708932', 'Alejandro', 'Rios',
+      {
+        name: 'Horario actual',
+        subjects: [
+          {
+
+            id: 'ESI1018N',
+            name: 'Desarrollo de Aplicaciones y Servicios Web',
+            teacher: {
+              id: 0,
+              name: 'Luis Fernando',
+              lastname: 'Gutierrez Preciado'
+            },
+            classInfo: [{
+              classRoom: 'T-202',
+              day: '0',
+              time: '11:00',
+              language: 'Español'
+            }, {
+              classRoom: 'T-202',
+              day: '2',
+              time: '11:00',
+              language: 'Español'
+            }]
+          }]
+      },
+      [], '1234', 'Ing. Sistemas Computacionales'),
     new Student('is708903', 'Carlo', 'Muñoz',
-    {
-      name: 'xd',
-      subjects: [
-        { id: 2, name: 'Arqui', teacher: 
-                                  { id: 0, name: 'Johan', lastname: 'Perez' },
-          classInfo: [{ classRoom: 'D-116', day: 2, time: '11:00', language: 'Spanish' },
-                      { classRoom: 'T-204', day: 3, time: '11:00', language: 'Spanish' }]
-        }]
-    },
-    [], '098', 'Ing. Sistemas Computacionales'),
+      {
+        name: 'Horario actual',
+        subjects: [
+          {
+
+            id: 'ESI1018N',
+            name: 'Desarrollo de Aplicaciones y Servicios Web',
+            teacher: {
+              id: 0,
+              name: 'Luis Fernando',
+              lastname: 'Gutierrez Preciado'
+            },
+            classInfo: [{
+              classRoom: 'T-202',
+              day: '0',
+              time: '11:00',
+              language: 'Español'
+            }, {
+              classRoom: 'T-202',
+              day: '2',
+              time: '11:00',
+              language: 'Español'
+            }]
+          }]
+      },
+      [], '098', 'Ing. Sistemas Computacionales'),
   ];
   activeStudent: Student;
   userName = new Subject<string>();
 
-  constructor() { 
+  constructor() {
     this.activeStudent = null;
   }
 

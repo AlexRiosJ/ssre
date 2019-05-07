@@ -17,7 +17,7 @@ export class SchoolService {
   constructor() {
 
 
-    const requestURL = 'https://api.myjson.com/bins/yacpg';
+    const requestURL = 'https://api.myjson.com/bins/uvbs2';
     const request = new XMLHttpRequest();
     request.open('GET', requestURL);
     // request.responseType = 'json';
@@ -42,14 +42,14 @@ export class SchoolService {
   }
 
   addSubject(code: string, name: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
-    let id = 0;
+    let id = '';
     if (this.subjects.length > 0) { id = this.subjects[this.subjects.length - 1].id + 1; }
 
     const newSubject = new Subject(id, name, description, credits, area, department, groups);
     this.subjects.push(newSubject);
   }
 
-  modifySubjectById(id: number, name: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
+  modifySubjectById(id: string, name: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
     const subjectIndex = this.subjects.findIndex(sub => sub.id === id);
 
     if (subjectIndex !== -1) {
@@ -76,7 +76,7 @@ export class SchoolService {
     }
   }
 
-  deleteSubjectById(id: number) {
+  deleteSubjectById(id: string) {
     const subjectIndex = this.subjects.findIndex(sub => sub.id === id);
 
     if (subjectIndex !== -1) {
@@ -93,14 +93,14 @@ export class SchoolService {
   }
 
   addGroup(name: string, teacher: Teacher, classInfo: ClassInformation[]) {
-    let id = 0;
+    let id = '';
     if (this.groups.length > 0) { id = this.groups[this.groups.length - 1].id + 1; }
 
     const newGroup = new GroupList(id, name, teacher, classInfo);
     this.groups.push(newGroup);
   }
 
-  modifyGroupById(id: number, name: string, teacher: Teacher, classInfo: ClassInformation[]) {
+  modifyGroupById(id: string, name: string, teacher: Teacher, classInfo: ClassInformation[]) {
     const groupIndex = this.groups.findIndex(group => group.id === id);
 
     if (groupIndex !== -1) {
@@ -120,7 +120,7 @@ export class SchoolService {
     }
   }
 
-  deleteGroupById(id: number) {
+  deleteGroupById(id: string) {
     const groupIndex = this.groups.findIndex(group => group.id === id);
 
     if (groupIndex !== -1) {
