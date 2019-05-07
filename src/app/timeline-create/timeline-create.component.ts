@@ -12,6 +12,7 @@ import { NgForm } from '@angular/forms';
 export class TimelineCreateComponent implements OnInit {
 
   public tempTimetable: GroupList[] = [];
+  noNameInTimetable = false;
   
   constructor(private userService: UserService) { }
 
@@ -59,10 +60,13 @@ export class TimelineCreateComponent implements OnInit {
   }
 
   submit(formulario: NgForm) {
+    this.noNameInTimetable = false;
     const timetableToSend = this.tempTimetable;
     const index = this.userService.getActiveStudent().timetables.findIndex(timetable => timetable.name === formulario.value.name);
     if (index === -1 && formulario.value.name !== '' && formulario.value.name !== null) {
       this.userService.getActiveStudent().timetables.push({ name: formulario.value.name, subjects: timetableToSend });
+    } else {
+      this.noNameInTimetable = true;
     }
     this.tempTimetable = [];
     formulario.reset();
