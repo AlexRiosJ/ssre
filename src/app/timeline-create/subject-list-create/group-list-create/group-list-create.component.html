@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="modal-nombre">{{subject.name}}</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="hide()">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="hide(); added = false; unableToAdd = false;">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -12,11 +12,22 @@
           <h5>Descripción:</h5>
           <p>{{subject.description}}</p>
         </div>
+        <div *ngIf="unableToAdd" class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert" (click)="unableToAdd = false; added = false;">&times;</button>
+          <span>¡Imposible añadir! Otra asignatura ya añadida está a la misma hora o día. Intenta removerla antes.</span>
+        </div>
+        <div *ngIf="added" class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert" (click)="added = false; unableToAdd = false;">&times;</button>
+            <span>¡Se ha añadido correctamente!</span>
+        </div>
+        <hr>
         <div id="modal-oferta">
           <h5>Oferta:</h5>
           <table class="table table-bordered text-center">
             <thead>
               <tr class="text-light table-primary">
+                <th class="add" scope="col">Agregar</th>
+                <th class="remove" scope="col">Quitar</th>
                 <th class="group" scope="col">Grupo</th>
                 <th class="teacher" scope="col">Profesor</th>
                 <th class="classroom" scope="col">Salón</th>
@@ -25,7 +36,6 @@
               </tr>
             </thead>
           </table>
-          <!-- ngFor -->
           <app-group-item-create 
             *ngFor="let group of subject.groups" 
             [group]="group"
@@ -35,7 +45,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hide()">Cerrar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hide(); added = false; unableToAdd = false;">Cerrar</button>
       </div>
     </div>
   </div>

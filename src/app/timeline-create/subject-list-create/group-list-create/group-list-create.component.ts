@@ -12,11 +12,16 @@ import { TimelineCreateComponent } from '../../timeline-create.component';
 export class GroupListCreateComponent implements OnInit {
   @ViewChild('childModal') public childModal: ModalDirective;
 
+  unableToAdd = false;
+  added = false;
+
   constructor(private timetable: TimelineCreateComponent) { }
 
   @Input() subject: Subject;
 
   ngOnInit() {
+    this.unableToAdd = false;
+    this.added = false;
   }
 
   show() {
@@ -27,14 +32,14 @@ export class GroupListCreateComponent implements OnInit {
     this.childModal.hide();
   }
 
-  addGroupToTimetable(group: GroupList) {
-    const added = this.timetable.addToTimetable(group);
-    console.log(added);
+  addGroupToTimetable(group: GroupList): boolean {
+    this.unableToAdd = this.timetable.addToTimetable(group) ? false : true;
+    this.added = !this.unableToAdd;
+    return this.added;
   }
 
-  removeGroupToTimetable(group: GroupList) {
-    const removed = this.timetable.removeToTimetable(group);
-    console.log(removed);
+  removeGroupToTimetable(group: GroupList): GroupList {
+    return this.timetable.removeToTimetable(group);
   }
 
 }
