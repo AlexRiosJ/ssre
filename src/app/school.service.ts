@@ -17,7 +17,7 @@ export class SchoolService {
   constructor() {
 
 
-    const requestURL = 'https://api.myjson.com/bins/uvbs2';
+    const requestURL = 'https://api.myjson.com/bins/sgdge';
     const request = new XMLHttpRequest();
     request.open('GET', requestURL);
     // request.responseType = 'json';
