@@ -31,7 +31,7 @@ export class SchoolService {
       for (const subject of subjects) {
         self.addSubject(subject.code, subject.name, subject.description, subject.credits, subject.area, subject.department, subject.groups);
         for (const group of subject.groups) {
-          self.addGroup(group.name, group.teacher, group.classInfo);
+          self.addGroup(group.groupCode, group.name, group.teacher, group.classInfo);
         }
       }
 
@@ -42,15 +42,13 @@ export class SchoolService {
   }
 
   addSubject(code: string, name: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
-    let id = '';
-    if (this.subjects.length > 0) { id = this.subjects[this.subjects.length - 1].id + 1; }
-
-    const newSubject = new Subject(id, name, description, credits, area, department, groups);
+    const newSubject = new Subject(code, name, description, credits, area, department, groups);
     this.subjects.push(newSubject);
   }
 
-  modifySubjectById(id: string, name: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
-    const subjectIndex = this.subjects.findIndex(sub => sub.id === id);
+// tslint:disable-next-line: max-line-length
+  modifySubjectById(code: string, name: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
+    const subjectIndex = this.subjects.findIndex(sub => sub.code === code);
 
     if (subjectIndex !== -1) {
       if (name != null) { this.subjects[subjectIndex].name = name; }
@@ -62,8 +60,8 @@ export class SchoolService {
     }
   }
 
-  modifySubjectByName(nameToSearch: string, newName: string, description: string,
-                      credits: number, area: string, department: string, groups: GroupList[]) {
+// tslint:disable-next-line: max-line-length
+  modifySubjectByName(nameToSearch: string, newName: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
     const subjectIndex = this.subjects.findIndex(sub => sub.name === nameToSearch);
 
     if (subjectIndex !== -1) {
@@ -76,8 +74,8 @@ export class SchoolService {
     }
   }
 
-  deleteSubjectById(id: string) {
-    const subjectIndex = this.subjects.findIndex(sub => sub.id === id);
+  deleteSubjectById(code: string) {
+    const subjectIndex = this.subjects.findIndex(sub => sub.code === code);
 
     if (subjectIndex !== -1) {
       this.subjects.splice(subjectIndex, 1);
@@ -92,18 +90,16 @@ export class SchoolService {
     }
   }
 
-  addGroup(name: string, teacher: Teacher, classInfo: ClassInformation[]) {
-    let id = '';
-    if (this.groups.length > 0) { id = this.groups[this.groups.length - 1].id + 1; }
-
-    const newGroup = new GroupList(id, name, teacher, classInfo);
+  addGroup(groupCode: string, name: string, teacher: Teacher, classInfo: ClassInformation[]) {
+    const newGroup = new GroupList(groupCode, name, teacher, classInfo);
     this.groups.push(newGroup);
   }
 
-  modifyGroupById(id: string, name: string, teacher: Teacher, classInfo: ClassInformation[]) {
-    const groupIndex = this.groups.findIndex(group => group.id === id);
+  modifyGroupById(groupCode: string, name: string, teacher: Teacher, classInfo: ClassInformation[]) {
+    const groupIndex = this.groups.findIndex(group => group.groupCode === groupCode);
 
     if (groupIndex !== -1) {
+      if (groupCode != null) { this.groups[groupIndex].groupCode = groupCode; }
       if (name != null) { this.groups[groupIndex].name = name; }
       if (teacher != null) { this.groups[groupIndex].teacher = teacher; }
       if (classInfo != null) { this.groups[groupIndex].classInfo = classInfo; }
@@ -120,8 +116,8 @@ export class SchoolService {
     }
   }
 
-  deleteGroupById(id: string) {
-    const groupIndex = this.groups.findIndex(group => group.id === id);
+  deleteGroupById(groupCode: string) {
+    const groupIndex = this.groups.findIndex(group => group.groupCode === groupCode);
 
     if (groupIndex !== -1) {
       this.groups.splice(groupIndex, 1);

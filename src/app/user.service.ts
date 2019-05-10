@@ -14,7 +14,7 @@ export class UserService {
         subjects: [
           {
 
-            id: 'ESI1018N',
+            groupCode: 'ESI1018N',
             name: 'Desarrollo de Aplicaciones y Servicios Web',
             teacher: {
               id: 0,
@@ -41,7 +41,7 @@ export class UserService {
         subjects: [
           {
 
-            id: 'ESI1018N',
+            groupCode: 'ESI1018N',
             name: 'Desarrollo de Aplicaciones y Servicios Web',
             teacher: {
               id: 0,
@@ -68,7 +68,7 @@ export class UserService {
         subjects: [
           {
 
-            id: 'ESI1018N',
+            groupCode: 'ESI1018N',
             name: 'Desarrollo de Aplicaciones y Servicios Web',
             teacher: {
               id: 0,

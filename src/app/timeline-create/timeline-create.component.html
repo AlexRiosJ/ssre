@@ -23,8 +23,16 @@
       <form #f="ngForm" (ngSubmit)="submit(f)">
           <input class="form-control mb-2" type="text" id="inputName" ngModel name="name" placeholder="Nombre de horario">
           <div *ngIf="noNameInTimetable" class="alert alert-dismissible alert-warning">
-            <button type="button" class="close" data-dismiss="alert" (click)="noNameInTimetable = false">&times;</button>
+            <button type="button" class="close" data-dismiss="alert" (click)="noNameInTimetable = false;">&times;</button>
             <span>Ponle un nombre a tu horario.</span>
+          </div>
+          <div *ngIf="repeatedTimetableName" class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert" (click)="repeatedTimetableName = false;">&times;</button>
+            <span>El horario: '{{timetableName}}' ya existe. Ponle otro nombre, por favor.</span>
+          </div>
+          <div *ngIf="created" class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert" (click)="created = false;">&times;</button>
+            <span>Tu horario: '{{timetableName}}' se ha creado exitosamente.</span>
           </div>
           <app-timetable [groups]="tempTimetable"></app-timetable>
           <button type="submit" class="btn btn-info btn-lg btn-block">Crear</button>

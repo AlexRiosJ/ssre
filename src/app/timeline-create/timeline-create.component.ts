@@ -12,7 +12,10 @@ import { NgForm } from '@angular/forms';
 export class TimelineCreateComponent implements OnInit {
 
   public tempTimetable: GroupList[] = [];
+  timetableName = '';
   noNameInTimetable = false;
+  repeatedTimetableName = false;
+  created = false;
 
   constructor(private userService: UserService) { }
 
@@ -26,7 +29,7 @@ export class TimelineCreateComponent implements OnInit {
       this.tempTimetable.push(group);
       // console.table(this.tempTimetable);
       return true;
-    } else if (index >= 0 && this.tempTimetable[index].id !== group.id && !this.groupCollides(group.classInfo)) {
+    } else if (index >= 0 && this.tempTimetable[index].groupCode !== group.groupCode && !this.groupCollides(group.classInfo)) {
       this.tempTimetable.splice(index, 1);
       this.tempTimetable.push(group);
       // console.table(this.tempTimetable);
@@ -39,7 +42,7 @@ export class TimelineCreateComponent implements OnInit {
     for (const subject of this.tempTimetable) {
       for (const classInfo of subject.classInfo) {
         for (const currentClassInfo of groupClassInfo) {
-          if (classInfo.day == currentClassInfo.day && classInfo.time == currentClassInfo.time) {
+          if (classInfo.day === currentClassInfo.day && classInfo.time === currentClassInfo.time) {
             return true;
           }
         }
@@ -49,7 +52,7 @@ export class TimelineCreateComponent implements OnInit {
   }
 
   removeToTimetable(group: GroupList): GroupList {
-    const index = this.tempTimetable.findIndex(groupAux => groupAux.id === group.id);
+    const index = this.tempTimetable.findIndex(groupAux => groupAux.groupCode === group.groupCode);
     if (index >= 0) {
       this.tempTimetable.splice(index, 1);
       return group;
@@ -58,13 +61,22 @@ export class TimelineCreateComponent implements OnInit {
   }
 
   submit(formulario: NgForm) {
-    this.noNameInTimetable = false;
     const timetableToSend = this.tempTimetable;
     const index = this.userService.getActiveStudent().timetables.findIndex(timetable => timetable.name === formulario.value.name);
     if (index === -1 && formulario.value.name !== '' && formulario.value.name !== null) {
+      this.created = true;
+      this.repeatedTimetableName = false;
+      this.noNameInTimetable = false;
+      this.timetableName = formulario.value.name;
       this.userService.getActiveStudent().timetables.push({ name: formulario.value.name, subjects: timetableToSend });
+    } else if (index >= 0) {
+      this.repeatedTimetableName = true;
+      this.noNameInTimetable = false;
+      this.created = false;
     } else {
       this.noNameInTimetable = true;
+      this.created = false;
+      this.repeatedTimetableName = false;
     }
     this.tempTimetable = [];
     formulario.reset();
