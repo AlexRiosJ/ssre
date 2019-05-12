@@ -28,7 +28,7 @@
     <table class="table table-bordered table-sm table-fixed table-hover">
       <tbody class="small table-sm">
         <tr class="table" *ngFor="let subject of getSubjects()">
-          <td (click)="childModal.show()" *ngIf="subject.area === 'CU' || subject.area === 'SP'" style="width: 20%">{{subject.id}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'CU' || subject.area === 'SP'" style="width: 20%">{{subject.code}}</td>
           <td (click)="childModal.show()" *ngIf="subject.area === 'CU' || subject.area === 'SP'">{{subject.credits}}</td>
           <td (click)="childModal.show()" *ngIf="subject.area === 'CU' || subject.area === 'SP'" style="width: 100%">{{subject.name}}</td>
           <td (click)="childModal.show()" *ngIf="subject.area === 'CU' || subject.area === 'SP'">{{subject.department}}</td>
@@ -51,7 +51,7 @@
     <table class="table table-bordered table-sm table-fixed table-hover">
       <tbody class="small table-sm">
         <tr class="table" *ngFor="let subject of getSubjects()">
-          <td (click)="childModal.show()" *ngIf="subject.area === 'SC'" style="width: 20%">{{subject.id}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'SC'" style="width: 20%">{{subject.code}}</td>
           <td (click)="childModal.show()" *ngIf="subject.area === 'SC'">{{subject.credits}}</td>
           <td (click)="childModal.show()" *ngIf="subject.area === 'SC'" style="width: 100%">{{subject.name}}</td>
           <td (click)="childModal.show()" *ngIf="subject.area === 'SC'">{{subject.department}}</td>
@@ -73,7 +73,7 @@
     <table class="table table-bordered table-sm table-fixed table-hover">
       <tbody class="small table-sm">
         <tr class="table" *ngFor="let subject of getSubjects()">
-          <td (click)="childModal.show()" *ngIf="subject.area === 'ING'" style="width: 20%">{{subject.id}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'ING'" style="width: 20%">{{subject.code}}</td>
           <td (click)="childModal.show()" *ngIf="subject.area === 'ING'">{{subject.credits}}</td>
           <td (click)="childModal.show()" *ngIf="subject.area === 'ING'" style="width: 100%">{{subject.name}}</td>
           <td (click)="childModal.show()" *ngIf="subject.area === 'ING'">{{subject.department}}</td>
@@ -95,7 +95,7 @@
     <table class="table table-bordered table-sm table-fixed table-hover">
       <tbody class="small table-sm">
         <tr class="table" *ngFor="let subject of getSubjects()">
-          <td (click)="childModal.show()" *ngIf="subject.area === 'PAP'" style="width: 20%">{{subject.id}}</td>
+          <td (click)="childModal.show()" *ngIf="subject.area === 'PAP'" style="width: 20%">{{subject.code}}</td>
           <td (click)="childModal.show()" *ngIf="subject.area === 'PAP'">{{subject.credits}}</td>
           <td (click)="childModal.show()" *ngIf="subject.area === 'PAP'" style="width: 100%">{{subject.name}}</td>
           <td (click)="childModal.show()" *ngIf="subject.area === 'PAP'">{{subject.department}}</td>
