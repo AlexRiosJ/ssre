@@ -1,0 +1,22 @@
+<div class="container">
+  <table class="table table-bordered table-striped small">
+    <thead class="table-primary">
+      <th class="code">Código</th>
+      <th class="name">Asignatura</th>
+      <th class="teacher">Profesor</th>
+      <th class="group">Grupos</th>
+    </thead>
+    <tr *ngFor="let group of getGroups()" colspan="5">
+      <td class="code">
+        {{group.groupCode}}
+      </td>
+      <td class="name">{{group.name}} </td>
+      <td class="teacher">{{group.teacher.lastname}} {{group.teacher.name}}</td>
+      <td class="group">
+          <div *ngFor="let class of group.classInfo">
+            {{getDay(class.day)}}: {{class.classRoom}}
+          </div>
+      </td>
+    </tr>
+  </table>
+</div>

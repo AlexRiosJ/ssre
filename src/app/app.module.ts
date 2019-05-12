@@ -23,6 +23,7 @@ import { SubjectListCreateComponent } from './timeline-create/subject-list-creat
 import { TimelineGroupComponent } from './timetable/timeline-group/timeline-group/timeline-group.component';
 import { GroupListCreateComponent } from './timeline-create/subject-list-create/group-list-create/group-list-create.component';
 import { GroupItemCreateComponent } from './timeline-create/subject-list-create/group-list-create/group-item-create/group-item-create.component';
+import { TimetableListComponent } from './timetable-list/timetable-list.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { GroupItemCreateComponent } from './timeline-create/subject-list-create/
     TimelineGroupComponent,
     GroupListCreateComponent,
     GroupItemCreateComponent,
+    TimetableListComponent,
   ],
   imports: [
     BrowserModule,

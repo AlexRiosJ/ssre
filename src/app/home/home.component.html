@@ -36,6 +36,8 @@
                 <span class="badge badge-pill badge-warning mx-1 px-2">20 de 40</span>
             </div>
             <hr>
+            <button *ngIf="!showDetails" class="btn btn-block btn-outline-info mr-3" (click)="showDetails = !showDetails">Mostrar detalles de horarios</button>
+            <button *ngIf="showDetails" class="btn btn-block btn-info mr-3" (click)="showDetails = !showDetails">Ocultar detalles de horarios</button>
             <!-- 
                 TODO: Define if this section should be here. There is already a section with this info
             <hr>
@@ -57,6 +59,7 @@
             <div id="currentTimeTable">
                 <h5 class="text-primary">Horario actual</h5>
                 <app-timetable [groups]="userService.getActiveStudent().currentTimetable.subjects"></app-timetable>
+                <app-timetable-list *ngIf="showDetails" [groups]="userService.getActiveStudent().currentTimetable.subjects"></app-timetable-list>
             </div>
             <hr>
             <div id="timeTableList" *ngIf="userService.getActiveStudent().timetables.length > 0">
@@ -64,6 +67,7 @@
                 <div *ngFor="let timeTable of userService.getActiveStudent().timetables">
                     <h6 class="muted-text"> {{timeTable.name}} </h6>
                     <app-timetable [groups]="timeTable.subjects"></app-timetable>
+                    <app-timetable-list *ngIf="showDetails" [groups]="timeTable.subjects"></app-timetable-list>
                     <button class="btn btn-outline-danger" (click)="remove(timeTable.name)">Eliminar opción</button>
                     <hr>
                 </div>

@@ -35,6 +35,7 @@
             <span>Tu horario: '{{timetableName}}' se ha creado exitosamente.</span>
           </div>
           <app-timetable [groups]="tempTimetable"></app-timetable>
+          <app-timetable-list *ngIf="tempTimetable.lenght > 0" [groups]="tempTimetable"></app-timetable-list>
           <button type="submit" class="btn btn-info btn-lg btn-block">Crear</button>
       </form>
     </div>

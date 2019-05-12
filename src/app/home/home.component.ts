@@ -10,6 +10,7 @@ import { SchoolService } from '../school.service';
 export class HomeComponent implements OnInit {
 
   constructor(private userService: UserService, private schoolService: SchoolService) { }
+  showDetails = false;
 
   ngOnInit() {
   }
