@@ -5,10 +5,13 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
-const Subjects = require('Subject-list.js');
+const Subjects = require('./Subject-list.js');
 
 const hostname = '127.0.0.1';
 const port = 3000;
+
+//TODO: Change the secret key
+const secretkey = 'Bueb-ito';
 
 let app = express();
 
@@ -20,6 +23,8 @@ let corsOptions = {
 
 const subjects = new Subjects();
 const users = JSON.parse(fs.readFileSync('users.json'));
+
+let tokensWhiteList = [];
 
 app.use(cors(corsOptions));
 app.use(jsonParser);
@@ -56,7 +61,21 @@ app.route('/api/subjects/:code')
 
 app.route('/api/login')
     .post((req, res) => {
-        //TODO: Create the token and send it to the user
+        const username = req.body.username;
+        const password = req.body.password;
+
+        let user = users.find(u => u.username == username && u.password == password);
+
+        if(user) {
+            jwt.sign(user, secretkey, (err, token) => {
+                tokensWhiteList.push(token);
+                res.header('auth', token)
+                    .status(200)
+                    .send();
+            })
+        } else {
+            res.status(400).send("User doesn't found");
+        }
     });
 
 app.route('/api/login')

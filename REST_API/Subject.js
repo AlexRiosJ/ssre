@@ -1,4 +1,4 @@
-export class Subject {
+class Subject {
     constructor(code, name, description, credits, area, department, groups) {
         this.code = code;
         this.name = name;
@@ -9,3 +9,5 @@ export class Subject {
         this.groups = groups;
     }
 }
+
+module.exports = Subject;

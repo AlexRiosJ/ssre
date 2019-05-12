@@ -1,6 +1,7 @@
-const Subject = require('Subject.js'); 
+const Subject = require('./Subject.js'); 
+const fs = require('fs');
 
-export class {
+class Subjects {
     constructor() {
         this.path = 'subjects.json';
         this.subjects = JSON.parse(fs.readFileSync(this.path));
@@ -30,3 +31,5 @@ export class {
         //TODO: Implement this function
     }
 }
+
+module.exports = Subjects;
