@@ -44,7 +44,7 @@ app.route('/api/subjects')
 app.route('/api/subjects/:code')
     .get((req, res) => {
         if(req.params.code) {
-            let subject = Subjects.find(req.params.code);
+            let subject = subjects.find(req.params.code);
             if(subject) {
                 res.json(subject);
             } else {
@@ -55,8 +55,13 @@ app.route('/api/subjects/:code')
             res.status(400).send("Error. Code required");
         }
     })
-    .patch(verifyToken, (req, res) => {
-        //TODO: Use subjects.modifySubject() to implement this ¿
+    .patch(verifyToken, partialCheckParameters, (req, res) => {
+        let code = req.params.code;
+        if(subjects.modifySubject(code, req.body)) {
+            res.status(200).json(req.body);
+        } else {
+            res.status(400).send("Subject doesn't found or code already exists");
+        }
     });
 
 app.route('/api/login')
@@ -69,6 +74,7 @@ app.route('/api/login')
         if(user) {
             jwt.sign(user, secretkey, (err, token) => {
                 tokensWhiteList.push(token);
+                
                 res.header('auth', token)
                     .status(200)
                     .send();
@@ -78,15 +84,32 @@ app.route('/api/login')
         }
     });
 
-app.route('/api/login')
-    .post((req, res) => {
-        //TODO: Remove the token from the white list
+app.route('/api/logout')
+    .post(verifyToken, (req, res) => {
+        const token = req.header('auth');
+        const tokenIndex = tokensWhiteList.findIndex(t => t == token);
+
+        if(tokenIndex != -1) {
+            tokensWhiteList.splice(tokenIndex, 1);
+            //fs.writeFileSync('tokens.json', tokensWhiteList);
+            res.status(200).send();
+        } else {
+            req.status(400).send("Error ocurred");
+        }
     });
 
+app.listen(port, () => console.log(`Conection on port ${port}!`));
 
 function verifyToken(req, res, next) {
-    //TODO: Implement this function with JWT
-    next();
+    const token = req.header('auth');
+
+    if(token && tokensWhiteList.find(t => t == token)) {
+        jwt.verify(token, secretkey, (err, authData) => {
+            next();
+        })
+    } else {
+        res.status(403).send();
+    }
 }
 
 function checkParameters(req, res, next) {
@@ -100,7 +123,7 @@ function checkParameters(req, res, next) {
     let groupsFlag = false;
     let tooMuchParametersFlag = false;
 
-    for(param in req.body) {
+    for(let param in req.body) {
         switch(param){
             case('code'):
                 codeFlag = true;
@@ -124,12 +147,14 @@ function checkParameters(req, res, next) {
 
             case('department'):
                 departmentFlag = true;
+                break;
 
-            case('group'):
+            case('groups'):
                 groupsFlag = true;
                 break;
 
             default:
+                console.log(param);
                 tooMuchParametersFlag = true;
         }
     }
@@ -138,6 +163,64 @@ function checkParameters(req, res, next) {
         res.status(400).send("Too much parameters encountered");
     } else {
         if(codeFlag && nameFlag && descriptionFlag && creditsFlag && areaFlag && departmentFlag && groupsFlag) {
+            next();
+        } else {
+            res.status(400).send("Missing parameters");
+        }
+    }
+}
+
+function partialCheckParameters(req, res, next) {
+    //Body must have at least one of these variables in order to modify the subject
+    let codeFlag = false;
+    let nameFlag = false;
+    let descriptionFlag = false;
+    let creditsFlag = false;
+    let areaFlag = false;
+    let departmentFlag = false;
+    let groupsFlag = false;
+    let tooMuchParametersFlag = false;
+
+    for(let param in req.body) {
+        switch(param){
+            case('code'):
+                codeFlag = true;
+                break;
+            
+            case('name'):
+                nameFlag = true;
+                break;
+            
+            case('description'):
+                descriptionFlag = true;
+                break;
+
+            case('credits'):
+                creditsFlag = true;
+                break;
+            
+            case('area'):
+                areaFlag = true;
+                break;
+
+            case('department'):
+                departmentFlag = true;
+                break;
+
+            case('groups'):
+                groupsFlag = true;
+                break;
+
+            default:
+                console.log(param);
+                tooMuchParametersFlag = true;
+        }
+    }
+
+    if(tooMuchParametersFlag) {
+        res.status(400).send("Too much parameters encountered");
+    } else {
+        if(codeFlag || nameFlag || descriptionFlag || creditsFlag || areaFlag || departmentFlag || groupsFlag) {
             next();
         } else {
             res.status(400).send("Missing parameters");
