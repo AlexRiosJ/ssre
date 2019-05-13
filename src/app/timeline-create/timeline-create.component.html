@@ -28,14 +28,14 @@
           </div>
           <div *ngIf="repeatedTimetableName" class="alert alert-dismissible alert-danger">
             <button type="button" class="close" data-dismiss="alert" (click)="repeatedTimetableName = false;">&times;</button>
-            <span>El horario: '{{timetableName}}' ya existe. Ponle otro nombre, por favor.</span>
+            <span>El horario: '{{timetableService.timetableName}}' ya existe. Ponle otro nombre, por favor.</span>
           </div>
           <div *ngIf="created" class="alert alert-dismissible alert-success">
             <button type="button" class="close" data-dismiss="alert" (click)="created = false;">&times;</button>
-            <span>Tu horario: '{{timetableName}}' se ha creado exitosamente.</span>
+            <span>Tu horario: '{{timetableService.timetableName}}' se ha creado exitosamente.</span>
           </div>
-          <app-timetable [groups]="tempTimetable"></app-timetable>
-          <app-timetable-list *ngIf="tempTimetable.lenght > 0" [groups]="tempTimetable"></app-timetable-list>
+          <app-timetable [groups]="timetableService.tempTimetable"></app-timetable>
+          <app-timetable-list *ngIf="timetableService.tempTimetable > 0" [groups]="timetableService.tempTimetable"></app-timetable-list>
           <button type="submit" class="btn btn-info btn-lg btn-block">Crear</button>
       </form>
     </div>
