@@ -13,6 +13,8 @@ import { UserService } from '../../user.service';
 export class StudentEditComponent implements OnInit {
   majorList = ['ISC', 'ISI', 'IE', 'IES'];
   student: Student;
+  invalidEntry: boolean;
+  errorMessage: string;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -32,17 +34,17 @@ export class StudentEditComponent implements OnInit {
     const id = form.value.id;
     const studentAux = this.userService.getStudents().find(s => s.id.toUpperCase() === id.toUpperCase());
     if (studentAux) {
-        alert('Expediente ya registrado');
-        form.reset();
+      this.invalidEntry = true;
+      this.errorMessage = 'Usuario ya existente';
+      form.reset();
     } else {
       if (form.value.password !== form.value.confirmPassword) {
-        alert('Las contraseñas deben coincidir');
-        form.reset();
+        this.invalidEntry = true;
+        this.errorMessage = 'Las contraseñas deben coincidir';
       } else {
         this.userService.setActiveStudent(Object.assign ({}, this.student));
         this.authService.login();
         this.router.navigate(['/home'], {relativeTo: this.route});
-
       }
     }
     form.reset();

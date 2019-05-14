@@ -19,46 +19,94 @@
       </div>
   </div>
 </div>
-<div id="editModal" class="modal fade">
-  <div class="modal-dialog" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title">Editar</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-              <h5>Nombre</h5>
-              <input class="form-control" type="text" placeholder="Nombre" value="Nombre actual">
-              <br>
-              <h5>Apellidos</h5>
-              <input class="form-control" type="text" placeholder="Apellidos" value="Apellidos actuales">
-              <br>
-              <h5>Nombre de usuario</h5>
-              <input class="form-control" type="text" placeholder="Nombre de usuario" value="alguien123">
-              <br>
-              <h5>Correo electrónico</h5>
-              <input class="form-control" type="email" placeholder="Correo electrónico" value="alguien@iteso.mx">
-              <br>
-              <h5>Carrera</h5>
-              <div class="form-group">
-                  <select class="form-control">
-                      <option value="1">Ing. en Sistemas</option>
-                      <option value="2">Ing. en Electronica</option>
-                      <option value="3">Psicología</option>
-                      <option value="4">Derecho</option>
-                      <option value="5">Administración de empresas</option>
-                  </select>
-              </div>
-              <br>
-              <a href="#">¿Cambiar contraseña?</a>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-outline-danger mr-auto">Eliminar cuenta</button>
-              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Guardar</button>
-          </div>
-      </div>
-  </div>
+
+<div *ngIf="!isClosed" id="editModal" class="modal fade"> 
+    <form #f="ngForm" (ngSubmit)="submit(f)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div *ngIf="invalidNewPass" class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" (click)="invalidNewPass = false">&times;</button>
+                    <span>La contraseña es incorrecta</span>
+            </div>
+            <div class="modal-header">
+                <h5 class="modal-title">Editar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                    <div class="form-group" id="fullName">
+                        <div class="col-sm-12">
+                            <label for="sName">Nombre</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                ngModel 
+                                [(ngModel)]="student.name"
+                                name="sName" 
+                                id="sName" 
+                                placeholder="Ingresa tu nombre"
+                                required>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="lastname">Apellidos</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                ngModel 
+                                [(ngModel)]="student.lastname"
+                                name="lastname" 
+                                id="lastname" 
+                                placeholder="Ingresa tus apellidos"
+                                required>
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="carrera">Carrera</label>
+                            <select 
+                                class="form-control"
+                                ngModel
+                                [(ngModel)]="student.major"
+                                id="majorList"
+                                name="majorList"  >
+                                <option *ngFor="let major of majorList" > 
+                                    {{ major }}
+                                </option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="change-password">
+                            <h5>Cambio de contraseña</h5>
+                            <div class="col-sm-12">
+                                <label for="contraseña">Contraseña Actual</label>
+                                <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    ngModel 
+                                    name="password" 
+                                    id="password" 
+                                    placeholder="Ingresa tu contraseña">
+                            </div>
+
+                            <div class="col-sm-12">
+                                    <label for="contraseña">Contraseña Nueva</label>
+                                    <input 
+                                        type="password" 
+                                        class="form-control" 
+                                        ngModel 
+                                        name="newPassword" 
+                                        id="newPassword" 
+                                        placeholder="Ingresa tu nueva contraseña">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link" data-dismiss="modal" id="closeModal">Close</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Guardar</button>
+            </div>
+        </div>
+    </div>
+    </form>
 </div>

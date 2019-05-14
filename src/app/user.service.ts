@@ -34,7 +34,7 @@ export class UserService {
             }]
           }]
       },
-      [], '123', 'Ing. Sistemas Computacionales'),
+      [], '123', 'ISC'),
     new Student('is708932', 'Alejandro', 'Rios',
       {
         name: 'Horario actual',
@@ -61,7 +61,7 @@ export class UserService {
             }]
           }]
       },
-      [], '1234', 'Ing. Sistemas Computacionales'),
+      [], '1234', 'ISC'),
     new Student('is708903', 'Carlo', 'Muñoz',
       {
         name: 'Horario actual',
@@ -88,7 +88,7 @@ export class UserService {
             }]
           }]
       },
-      [], '098', 'Ing. Sistemas Computacionales'),
+      [], '098', 'ISC'),
   ];
   activeStudent: Student;
   userName = new Subject<string>();
@@ -102,7 +102,7 @@ export class UserService {
   }
 
   setActiveStudent(s: Student) {
-    this.activeStudent = Object.assign({}, s);
+    this.activeStudent = s;
   }
 
   getActiveStudent(): Student {
@@ -110,7 +110,9 @@ export class UserService {
   }
 
   changeUserName() {
-    this.userName.next(this.activeStudent.name);
+    if (this.activeStudent) {
+      this.userName.next(this.activeStudent.name);
+    }
   }
 
 }

@@ -12,29 +12,8 @@
             </div>
             <hr>
             <button id="btnNewTimeTable" type="button" class="btn btn-outline-primary btn-block" routerLink="/create">Crear nuevo
-                horario</button>
-            <hr>
-            <div id="creditProgress">
-                <h5 class="text-primary">Progreso de créditos</h5>
-                <p class="credits-title">Saberes Profesionales:</p>
-                <div class="progress mb-2">
-                    <div class="progress-bar bg-success professional-credits" role="progressbar" aria-valuenow="75"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="credits-title">Curriculum Universitario:</p>
-                <div class="progress mb-2">
-                    <div class="progress-bar bg-info basic-credits" role="progressbar" aria-valuenow="100"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="credits-title">Saberes Complementarios:</p>
-                <div class="progress mb-2">
-                    <div class="progress-bar bg-warning complementary-credits" role="progressbar" aria-valuenow="50"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="badge badge-pill badge-success mx-1 px-2">220 de 326</span>
-                <span class="badge badge-pill badge-info mx-1 px-2">56 de 56</span>
-                <span class="badge badge-pill badge-warning mx-1 px-2">20 de 40</span>
-            </div>
+                horario
+            </button>
             <hr>
             <button *ngIf="!showDetails" class="btn btn-block btn-outline-info mr-3" (click)="showDetails = !showDetails">Mostrar detalles de horarios</button>
             <button *ngIf="showDetails" class="btn btn-block btn-info mr-3" (click)="showDetails = !showDetails">Ocultar detalles de horarios</button>

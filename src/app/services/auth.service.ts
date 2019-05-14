@@ -32,5 +32,6 @@ export class AuthService {
 
   logout() {
     this.token = '';
+    this.changeStatus();
   }
 }
