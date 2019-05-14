@@ -8,13 +8,14 @@ const Subjects = require('./Subject-list.js');
 const bcrypt = require('bcrypt');
 
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = 3000; // Change for Heroku
 
 //TODO: Change the secret key
 const secretkey = 'Bueb-ito';
 const numberOfIterations = 10;
 
 let app = express();
+app.listen(port, () => console.log(`Connection on port ${port}!`));
 
 let jsonParser = bodyParser.json();
 let corsOptions = {
@@ -61,7 +62,7 @@ app.route('/api/subjects/:code')
         if(subjects.modifySubject(code, req.body)) {
             res.status(200).json(req.body);
         } else {
-            res.status(400).send("Subject doesn't found or code already exists");
+            res.status(400).send("Subject not found or code already exists");
         }
     });
 
@@ -92,7 +93,7 @@ app.route('/api/login')
                 res.status(400).send("User doesn't found");
             }
         } else {
-            res.status(400).send();
+            res.status(400).send("User not found");
         }
     });
 
@@ -110,7 +111,6 @@ app.route('/api/logout')
             req.status(400).send("Error ocurred");
         }
     });
-
 
 //TODO: Post for new user 
 //TODO: Edit patch in order to modify user and delete a schedule

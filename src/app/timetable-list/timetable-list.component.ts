@@ -15,6 +15,10 @@ export class TimetableListComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngAfterContentChecked() {
+    this.getGroups();
+  }
+
   getGroups(): GroupList[] {
     return this.groups;
   }

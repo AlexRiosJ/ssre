@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input, Output } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { Subject } from '../../../subject-list/subject/Subject';
 import { GroupList } from '../../../subject-list/subject/group-list/GroupList';
-import { TimelineCreateComponent } from '../../timeline-create.component';
+import { TimetableService } from '../../../timetable/timetable.service';
 
 @Component({
   selector: 'app-group-list-create',
@@ -15,7 +15,8 @@ export class GroupListCreateComponent implements OnInit {
   unableToAdd = false;
   added = false;
 
-  constructor(private timetable: TimelineCreateComponent) { }
+  // constructor(private timetable: TimelineCreateComponent) { }
+  constructor(private timetableService: TimetableService) { }
 
   @Input() subject: Subject;
 
@@ -33,13 +34,13 @@ export class GroupListCreateComponent implements OnInit {
   }
 
   addGroupToTimetable(group: GroupList): boolean {
-    this.unableToAdd = this.timetable.addToTimetable(group) ? false : true;
+    this.unableToAdd = this.timetableService.addToTimetable(group) ? false : true;
     this.added = !this.unableToAdd;
     return this.added;
   }
 
   removeGroupToTimetable(group: GroupList): GroupList {
-    return this.timetable.removeToTimetable(group);
+    return this.timetableService.removeToTimetable(group);
   }
 
 }
