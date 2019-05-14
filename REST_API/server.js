@@ -1,17 +1,18 @@
 'use strict'
-const http = require('http');
 const express = require('express');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const Subjects = require('./Subject-list.js');
+const bcrypt = require('bcrypt');
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
 //TODO: Change the secret key
 const secretkey = 'Bueb-ito';
+const numberOfIterations = 10;
 
 let app = express();
 
@@ -33,7 +34,7 @@ app.route('/api/subjects')
     .get((req, res) => {
         res.json(subjects.subjects);
     })
-    .post(verifyToken, checkParameters, (req, res) => {
+    .post(verifyAdminToken, checkSubjectParameters, (req, res) => {
         if(subjects.addSubject(req.body)) {
             res.status(201).send();
         } else {
@@ -55,7 +56,7 @@ app.route('/api/subjects/:code')
             res.status(400).send("Error. Code required");
         }
     })
-    .patch(verifyToken, partialCheckParameters, (req, res) => {
+    .patch(verifyAdminToken, partialCheckSubjectParameters, (req, res) => {
         let code = req.params.code;
         if(subjects.modifySubject(code, req.body)) {
             res.status(200).json(req.body);
@@ -66,41 +67,118 @@ app.route('/api/subjects/:code')
 
 app.route('/api/login')
     .post((req, res) => {
-        const username = req.body.username;
+        const id = req.body.id;
         const password = req.body.password;
 
-        let user = users.find(u => u.username == username && u.password == password);
+        if(id && password) {
+            let user = users.find(u => u.id == id);
 
-        if(user) {
-            jwt.sign(user, secretkey, (err, token) => {
-                tokensWhiteList.push(token);
-                
-                res.header('auth', token)
-                    .status(200)
-                    .send();
-            })
+            if(user) {
+                bcrypt.compare(password, user.password, numberOfIterations, (err, isCorrect) => {
+                    if(isCorrect) {
+                        //TODO: Cipher the password
+                        jwt.sign({'id': user.id}, secretkey, (err, token) => {
+                            tokensWhiteList.push(token);
+                            
+                            res.header('auth', token)
+                                .status(200)
+                                .send();
+                        })
+                    } else {
+                        res.status(403).send();
+                    }
+                })
+            } else {
+                res.status(400).send("User doesn't found");
+            }
         } else {
-            res.status(400).send("User doesn't found");
+            res.status(400).send();
         }
     });
 
 app.route('/api/logout')
-    .post(verifyToken, (req, res) => {
+    .post(verifyAdminToken, (req, res) => {
         const token = req.header('auth');
         const tokenIndex = tokensWhiteList.findIndex(t => t == token);
 
         if(tokenIndex != -1) {
+            //Delete the current token from the white list
             tokensWhiteList.splice(tokenIndex, 1);
-            //fs.writeFileSync('tokens.json', tokensWhiteList);
+
             res.status(200).send();
         } else {
             req.status(400).send("Error ocurred");
         }
     });
 
+
+//TODO: Post for new user 
+//TODO: Edit patch in order to modify user and delete a schedule
+app.route('/api/user')
+    .post(checkUserParams, (req, res) => {
+        //TODO: Check if the users already exists in the DB ✔
+        let user = req.body;
+        let userExist = users.find(u => u.id == user.id);
+        
+        if(!userExist) {
+            //TODO: Apply hash to the password ✔
+            bcrypt.hash(user.password, numberOfIterations, (err, hash) => {
+                if(!err) {
+                    user.password = hash;
+                    users.push(user);
+                    res.status(200).send();
+                } else {
+                    res.status(400).send();
+                }
+            });
+        } else {
+            status(400).send('User already exists');
+        }
+    });
+
+app.route('/api/user/:id')
+    .get(verifyUserToken, (req, res) => {
+        const token = req.header('auth');
+        const data = jwt.decode(token);
+
+        let user = users.find(u => u.id == data.id);
+
+        if(user) {
+            if(data.id == req.params.id)
+                res.json(user);
+
+            else 
+                res.status(403).send();
+        } else {
+            res.status(403).send();
+        }
+    })
+    .patch(verifyUserToken, checkScheduleParams, (req, res) => {
+        const token = req.header('auth');
+        const data = jwt.decode(token);
+        const id = req.params.id;
+
+        if(id && id == data.id) {
+            let user = users.find(u => u.id == data.id);
+            let schedule = req.body;
+            
+            if(user) {
+                user.timetables.push(schedule);
+                fs.writeFileSync('users.json', JSON.stringify(users));
+                res.status(200).send();
+            } else {
+                res.status(400).send();
+            }
+        } else {
+            res.status(403).send();
+        }
+    });
+
+
 app.listen(port, () => console.log(`Conection on port ${port}!`));
 
-function verifyToken(req, res, next) {
+
+function verifyUserToken(req, res, next) {
     const token = req.header('auth');
 
     if(token && tokensWhiteList.find(t => t == token)) {
@@ -108,11 +186,75 @@ function verifyToken(req, res, next) {
             next();
         })
     } else {
+        //If the header doesn't have the paremeter 'auth' or if the token isn't in the white list, then, 
+        //return an error
         res.status(403).send();
     }
 }
 
-function checkParameters(req, res, next) {
+function verifyAdminToken(req, res, next) {
+    const token = req.header('auth');
+
+    if(token && tokensWhiteList.find(t => t == token)) {
+        jwt.verify(token, secretkey, (err, authData) => {
+            if(authData.username == 'admin')
+                next();
+            else
+                res.status(403).send();
+        })
+    } else {
+        //If the header doesn't have the paremeter 'auth' or if the token isn't in the white list, then, 
+        //return an error
+        res.status(403).send();
+    }
+}
+
+function checkUserParams(req, res, next) {
+    let idFlag = false;
+    let nameFlag = false;
+    let lastNameFlag = false;
+    let majorFlag = false;
+    let passwordFlag = false;
+    let tooManyParametersFlag = false;
+
+    for(let param in req.body) {
+        switch(param) {
+            case('id'):
+                idFlag = true;
+                break;
+
+            case('name'):
+                nameFlag = true;
+                break;
+
+            case('lastname'):
+                lastNameFlag = true;
+                break;
+
+            case('major'):
+                majorFlag = true;
+                break;
+
+            case('password'):
+                passwordFlag = true;
+
+            default:
+                tooManyParametersFlag = true;
+        }
+    }
+
+    if(!tooManyParametersFlag) {
+        if(idFlag && nameFlag && lastNameFlag && majorFlag && passwordFlag) {
+            next();
+        } else {
+            res.status(400).send("Missing parameters");
+        }
+    } else {
+        res.status(400).send("Missing parameters");
+    }
+}
+
+function checkSubjectParameters(req, res, next) {
     //Body must have only these variables in order to add the subject
     let codeFlag = false;
     let nameFlag = false;
@@ -121,7 +263,7 @@ function checkParameters(req, res, next) {
     let areaFlag = false;
     let departmentFlag = false;
     let groupsFlag = false;
-    let tooMuchParametersFlag = false;
+    let tooManyParametersFlag = false;
 
     for(let param in req.body) {
         switch(param){
@@ -154,14 +296,14 @@ function checkParameters(req, res, next) {
                 break;
 
             default:
-                console.log(param);
-                tooMuchParametersFlag = true;
+                tooManyParametersFlag = true;
         }
     }
 
-    if(tooMuchParametersFlag) {
-        res.status(400).send("Too much parameters encountered");
+    if(tooManyParametersFlag) {
+        res.status(400).send("Too many parameters encountered");
     } else {
+        //If all of these variables are in body, then, execute the next function
         if(codeFlag && nameFlag && descriptionFlag && creditsFlag && areaFlag && departmentFlag && groupsFlag) {
             next();
         } else {
@@ -170,7 +312,7 @@ function checkParameters(req, res, next) {
     }
 }
 
-function partialCheckParameters(req, res, next) {
+function partialCheckSubjectParameters(req, res, next) {
     //Body must have at least one of these variables in order to modify the subject
     let codeFlag = false;
     let nameFlag = false;
@@ -179,7 +321,7 @@ function partialCheckParameters(req, res, next) {
     let areaFlag = false;
     let departmentFlag = false;
     let groupsFlag = false;
-    let tooMuchParametersFlag = false;
+    let tooManyParametersFlag = false;
 
     for(let param in req.body) {
         switch(param){
@@ -212,18 +354,50 @@ function partialCheckParameters(req, res, next) {
                 break;
 
             default:
-                console.log(param);
-                tooMuchParametersFlag = true;
+                tooManyParametersFlag = true;
         }
     }
 
-    if(tooMuchParametersFlag) {
-        res.status(400).send("Too much parameters encountered");
+    if(tooManyParametersFlag) {
+        res.status(400).send("Too many parameters encountered");
     } else {
+        //If one or more of the variables are in the body, then, go to the next function
         if(codeFlag || nameFlag || descriptionFlag || creditsFlag || areaFlag || departmentFlag || groupsFlag) {
             next();
         } else {
             res.status(400).send("Missing parameters");
         }
+    }
+}
+
+function checkScheduleParams(req, res, next) {
+    let nameFlag = false;
+    let subjectsFlag = false;
+    let tooManyParams = false;
+
+    for(let param in req.body) {
+        switch(param){
+            case('name'):
+                nameFlag = true;
+                break;
+
+            case('subjects'):
+                subjectsFlag = true;
+                break;
+
+            default:
+                tooManyParams = true;
+                break;
+        }
+    }
+
+    if(!tooManyParams) {
+        if(nameFlag && subjectsFlag) {
+            next();
+        } else {
+            res.status(400).send("Missing parameters");
+        }
+    } else {
+        res.status(400).send("Too many parameters encountered");
     }
 }
