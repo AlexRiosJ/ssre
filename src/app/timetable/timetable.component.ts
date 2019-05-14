@@ -19,6 +19,10 @@ export class TimetableComponent implements OnInit {
     this.createSubjectMatrix();
   }
 
+  ngAfterContentChecked() {
+    this.createSubjectMatrix();
+  }
+
   createSubjectMatrix() {
     const colors: string[] = ['#ffcccc', '#fffa65', '#cd84f1', '#7efff5', '#78e08f', '#c7ecee', '#63cdda', '#fad390', '#b8e994', '#e55039'];
 

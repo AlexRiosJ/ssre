@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { GroupList } from '../subject-list/subject/group-list/GroupList';
 import { UserService } from '../user.service';
 import { ClassInformation } from '../subject-list/subject/group-list/ClassInformation';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class TimetableService {
 
   public tempTimetable: GroupList[] = [];
   public timetableName: string = '';
+  changeData = new Subject<GroupList[]>();
 
   constructor(private userService: UserService) { }
 
@@ -19,11 +21,13 @@ export class TimetableService {
     if (index === -1 && !this.groupCollides(group.classInfo)) {
       this.tempTimetable.push(group);
       // console.table(this.tempTimetable);
+      this.notifyChanges();
       return true;
     } else if (index >= 0 && this.tempTimetable[index].groupCode !== group.groupCode && !this.groupCollides(group.classInfo)) {
       this.tempTimetable.splice(index, 1);
       this.tempTimetable.push(group);
       // console.table(this.tempTimetable);
+      this.notifyChanges();
       return true;
     }
     return false;
@@ -46,9 +50,15 @@ export class TimetableService {
     const index = this.tempTimetable.findIndex(groupAux => groupAux.groupCode === group.groupCode);
     if (index >= 0) {
       this.tempTimetable.splice(index, 1);
+      this.notifyChanges();
       return group;
     }
     return undefined;
+  }
+
+  notifyChanges() {
+    console.log(this.tempTimetable.slice());
+    this.changeData.next(this.tempTimetable.slice());
   }
 
 }
