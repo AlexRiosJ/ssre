@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   suscribed = false;
 
   constructor(private userService: UserService,
-    private authService: AuthService,
-    private http: HttpClient) { }
+              private authService: AuthService,
+              private http: HttpClient) { }
 
   ngOnInit() {
   }
@@ -43,6 +43,8 @@ export class LoginComponent implements OnInit {
             studentAux.token = data['token'];
             this.authService.login();
             this.userService.setActiveStudent(studentAux);
+            this.userService.changeUserName();
+            this.invalidEntry = false;
           }
         });
         if (!this.suscribed) {
