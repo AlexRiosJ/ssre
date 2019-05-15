@@ -26,7 +26,7 @@
         <div class="modal-content">
             <div *ngIf="invalidNewPass" class="alert alert-dismissible alert-danger">
                     <button type="button" class="close" data-dismiss="alert" (click)="invalidNewPass = false">&times;</button>
-                    <span>La contraseña es incorrecta</span>
+                    <span>Las contraseña deben coincidir</span>
             </div>
             <div class="modal-header">
                 <h5 class="modal-title">Editar</h5>
@@ -79,24 +79,24 @@
                         <div class="change-password">
                             <h5>Cambio de contraseña</h5>
                             <div class="col-sm-12">
-                                <label for="contraseña">Contraseña Actual</label>
+                                <label for="newPassword">Nueva Contraseña </label>
                                 <input 
                                     type="password" 
                                     class="form-control" 
                                     ngModel 
-                                    name="password" 
-                                    id="password" 
+                                    name="newPassword" 
+                                    id="newPassword" 
                                     placeholder="Ingresa tu contraseña">
                             </div>
 
                             <div class="col-sm-12">
-                                    <label for="contraseña">Contraseña Nueva</label>
+                                    <label for="confirmPassword">Confirmar Constraseña</label>
                                     <input 
                                         type="password" 
                                         class="form-control" 
                                         ngModel 
-                                        name="newPassword" 
-                                        id="newPassword" 
+                                        name="confirmPassword" 
+                                        id="confirmPassword" 
                                         placeholder="Ingresa tu nueva contraseña">
                                 </div>
                         </div>

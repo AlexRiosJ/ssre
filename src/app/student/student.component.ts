@@ -38,17 +38,13 @@ export class StudentComponent implements OnInit {
 
   submit(form: NgForm) {
     this.invalidNewPass = false;
-    if (form.value.password) {
-      if (form.value.password === this.student.password) {
-        if (form.value.newPassword) {
+    if (form.value.newPassword) {
+      if (form.value.newPassword !== form.value.confirmPassword) {
+        this.invalidNewPass = true;
+      } else {
           this.student.password = form.value.newPassword;
           this.updateUser();
           form.reset();
-        } else {
-          this.invalidNewPass = true;
-        }
-      } else {
-        this.invalidNewPass = true;
       }
     } else {
       this.updateUser();
