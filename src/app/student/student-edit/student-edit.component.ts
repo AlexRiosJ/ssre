@@ -19,10 +19,10 @@ export class StudentEditComponent implements OnInit {
   errorMessage: string;
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private authService: AuthService,
-    private userService: UserService,
-    private http: HttpClient) { }
+              private route: ActivatedRoute,
+              private authService: AuthService,
+              private userService: UserService,
+              private http: HttpClient) { }
 
   ngOnInit() {
     this.student = new Student('', '', '', '',

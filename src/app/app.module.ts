@@ -22,6 +22,7 @@ import { TimelineCreateComponent } from './timeline-create/timeline-create.compo
 import { SubjectListCreateComponent } from './timeline-create/subject-list-create/subject-list-create.component';
 import { TimelineGroupComponent } from './timetable/timeline-group/timeline-group/timeline-group.component';
 import { GroupListCreateComponent } from './timeline-create/subject-list-create/group-list-create/group-list-create.component';
+// tslint:disable-next-line: max-line-length
 import { GroupItemCreateComponent } from './timeline-create/subject-list-create/group-list-create/group-item-create/group-item-create.component';
 import { TimetableListComponent } from './timetable-list/timetable-list.component';
 import { HttpClientModule } from '@angular/common/http';

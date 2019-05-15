@@ -5,7 +5,7 @@ export class Student {
     constructor(
 // tslint:disable-next-line: variable-name
         public _id: string,
-        public id: string, //Expediente
+        public id: string, // Expediente
         public name: string,
         public lastname: string,
         public currentTimetable: Timetable,
@@ -14,6 +14,7 @@ export class Student {
         public major: string,
         public access: string,
         public token: string,
+// tslint:disable-next-line: variable-name
         public __v: number
     ) {}
 }
