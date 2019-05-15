@@ -3,6 +3,8 @@ import { UserService } from '../user.service';
 import { Student } from '../student/Student';
 import { NgForm, } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,8 @@ export class LoginComponent implements OnInit {
   invalidEntry = false;
 
   constructor(private userService: UserService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private http: HttpClient) { }
 
   ngOnInit() {
   }
@@ -27,13 +30,21 @@ export class LoginComponent implements OnInit {
     if (id && password) {
       const studentAux = this.userService.getStudents().find(s => s.id.toUpperCase() === id.toUpperCase());
       if (studentAux) {
-        if (studentAux.password.toUpperCase() === password.toUpperCase()) {
-          this.invalidEntry = false;
-          this.userService.setActiveStudent(studentAux);
-          this.authService.login();
-        } else {
-          this.invalidEntry = true;
-        }
+        this.http.post(environment.apiUrl + '/login', {
+          id: studentAux.id,
+          password
+        }).subscribe(data => {
+          // tslint:disable-next-line: no-string-literal
+          if (data['message'] === 'success') {
+            this.invalidEntry = false;
+// tslint:disable-next-line: no-string-literal
+            studentAux.token = data['token'];
+            this.authService.login();
+            this.userService.setActiveStudent(studentAux);
+          } else {
+            this.invalidEntry = true;
+          }
+        });
       } else {
         this.invalidEntry = true;
       }

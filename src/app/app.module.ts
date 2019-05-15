@@ -24,6 +24,7 @@ import { TimelineGroupComponent } from './timetable/timeline-group/timeline-grou
 import { GroupListCreateComponent } from './timeline-create/subject-list-create/group-list-create/group-list-create.component';
 import { GroupItemCreateComponent } from './timeline-create/subject-list-create/group-list-create/group-item-create/group-item-create.component';
 import { TimetableListComponent } from './timetable-list/timetable-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { TimetableListComponent } from './timetable-list/timetable-list.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,9 @@ import { Teacher } from './teacher/Teacher';
 import { GroupList } from './subject-list/subject/group-list/GroupList';
 import { ClassInformation } from './subject-list/subject/group-list/ClassInformation';
 import { Timetable } from './timetable/Timetable';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { environment } from '../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,39 +17,52 @@ export class SchoolService {
   public teachers: Teacher[] = [];
   public groups: GroupList[] = [];
 
-  constructor() {
+  constructor(private http: HttpClient) {
 
+    this.http.get(environment.apiUrl + '/subjects', {
+      observe: 'response'
+    })
+      .subscribe(
+        (res: HttpResponse<Subject[]>) => {
+          this.allSubjects = res.body;
+        },
+        err => console.log(err)
+      );
 
-    const requestURL = 'https://api.myjson.com/bins/i336m';
-    const request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    // request.responseType = 'json';
-    request.send();
-    const self = this;
-    request.onload = () => {
-      const jsonFile = request.response;
-      const subjects = JSON.parse(jsonFile);
-      self.allSubjects = subjects;
+    // const requestURL = 'https://api.myjson.com/bins/i336m';
+    // const request = new XMLHttpRequest();
+    // request.open('GET', requestURL);
+    // // request.responseType = 'json';
+    // request.send();
+    // const self = this;
+    //     request.onload = () => {
+    //       const jsonFile = request.response;
+    //       const subjects = JSON.parse(jsonFile);
+    //       self.allSubjects = subjects;
 
-      for (const subject of subjects) {
-        self.addSubject(subject.code, subject.name, subject.description, subject.credits, subject.area, subject.department, subject.groups);
-        for (const group of subject.groups) {
-          self.addGroup(group.groupCode, group.name, group.teacher, group.classInfo);
-        }
-      }
+    //       for (const subject of subjects) {
+    // // tslint:disable-next-line: max-line-length
+    //         self.addSubject(subject._id, subject.code, subject.name, subject.description, subject.credits, subject.area, subject.department, subject.groups, subject.__v);
+    //         for (const group of subject.groups) {
+    //           self.addGroup(group._id, group.groupCode, group.name, group.teacher, group.classInfo);
+    //         }
+    //       }
 
-      for (const group of self.groups) {
-        self.addTeacher(group.teacher.name, group.teacher.lastname);
-      }
-    };
+    //       for (const group of self.groups) {
+    //         self.addTeacher(group.teacher.name, group.teacher.lastname);
+    //       }
+    //     };
   }
 
-  addSubject(code: string, name: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
-    const newSubject = new Subject(code, name, description, credits, area, department, groups);
+  // tslint:disable-next-line: variable-name
+  addSubject(_id: string, code: string, name: string, description: string, credits: number,
+    // tslint:disable-next-line: variable-name
+    area: string, department: string, groups: GroupList[], __v: number) {
+    const newSubject = new Subject(_id, code, name, description, credits, area, department, groups, __v);
     this.subjects.push(newSubject);
   }
 
-// tslint:disable-next-line: max-line-length
+  // tslint:disable-next-line: max-line-length
   modifySubjectById(code: string, name: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
     const subjectIndex = this.subjects.findIndex(sub => sub.code === code);
 
@@ -60,7 +76,7 @@ export class SchoolService {
     }
   }
 
-// tslint:disable-next-line: max-line-length
+  // tslint:disable-next-line: max-line-length
   modifySubjectByName(nameToSearch: string, newName: string, description: string, credits: number, area: string, department: string, groups: GroupList[]) {
     const subjectIndex = this.subjects.findIndex(sub => sub.name === nameToSearch);
 
@@ -90,8 +106,9 @@ export class SchoolService {
     }
   }
 
-  addGroup(groupCode: string, name: string, teacher: Teacher, classInfo: ClassInformation[]) {
-    const newGroup = new GroupList(groupCode, name, teacher, classInfo);
+  // tslint:disable-next-line: variable-name
+  addGroup(_id: string, groupCode: string, name: string, teacher: Teacher, classInfo: ClassInformation[]) {
+    const newGroup = new GroupList(_id, groupCode, name, teacher, classInfo);
     this.groups.push(newGroup);
   }
 

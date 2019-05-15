@@ -2,99 +2,28 @@ import { Injectable } from '@angular/core';
 import { Student } from './student/Student';
 import { Timetable } from './timetable/Timetable';
 import { Subject } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
+import { HttpResponse, HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  students: Student[] = [
-    new Student('is703358', 'Carmen', 'Martinez',
-      {
-        name: 'Horario actual',
-        subjects: [
-          {
-
-            groupCode: 'ESI1018N',
-            name: 'Desarrollo de Aplicaciones y Servicios Web',
-            teacher: {
-              id: 0,
-              name: 'Luis Fernando',
-              lastname: 'Gutierrez Preciado'
-            },
-            classInfo: [{
-              classRoom: 'T-202',
-              day: '0',
-              time: '11:00',
-              language: 'Español'
-            }, {
-              classRoom: 'T-202',
-              day: '2',
-              time: '11:00',
-              language: 'Español'
-            }]
-          }]
-      },
-      [], '123', 'ISC'),
-    new Student('is708932', 'Alejandro', 'Rios',
-      {
-        name: 'Horario actual',
-        subjects: [
-          {
-
-            groupCode: 'ESI1018N',
-            name: 'Desarrollo de Aplicaciones y Servicios Web',
-            teacher: {
-              id: 0,
-              name: 'Luis Fernando',
-              lastname: 'Gutierrez Preciado'
-            },
-            classInfo: [{
-              classRoom: 'T-202',
-              day: '0',
-              time: '11:00',
-              language: 'Español'
-            }, {
-              classRoom: 'T-202',
-              day: '2',
-              time: '11:00',
-              language: 'Español'
-            }]
-          }]
-      },
-      [], '1234', 'ISC'),
-    new Student('is708903', 'Carlo', 'Muñoz',
-      {
-        name: 'Horario actual',
-        subjects: [
-          {
-
-            groupCode: 'ESI1018N',
-            name: 'Desarrollo de Aplicaciones y Servicios Web',
-            teacher: {
-              id: 0,
-              name: 'Luis Fernando',
-              lastname: 'Gutierrez Preciado'
-            },
-            classInfo: [{
-              classRoom: 'T-202',
-              day: '0',
-              time: '11:00',
-              language: 'Español'
-            }, {
-              classRoom: 'T-202',
-              day: '2',
-              time: '11:00',
-              language: 'Español'
-            }]
-          }]
-      },
-      [], '098', 'ISC'),
-  ];
+  students: Student[] = [];
   activeStudent: Student;
   userName = new Subject<string>();
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.activeStudent = null;
+    this.http.get(environment.apiUrl + '/user', {
+      observe: 'response'
+    })
+      .subscribe(
+        (res: HttpResponse<Student[]>) => {
+          this.students = res.body;
+        },
+        err => console.log(err)
+      );
   }
 
   getStudents(): Student[] {
