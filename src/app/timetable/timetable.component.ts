@@ -12,13 +12,14 @@ export class TimetableComponent implements OnInit {
   constructor() { }
 
   @Input() groups: GroupList[];
-  private subjectMatrix = new Array(8);
+  public subjectMatrix = new Array(8);
   public colorsOfSubjects = new Array(8);
 
   ngOnInit() {
     this.createSubjectMatrix();
   }
 
+// tslint:disable-next-line: use-life-cycle-interface
   ngAfterContentChecked() {
     this.createSubjectMatrix();
   }
@@ -34,6 +35,7 @@ export class TimetableComponent implements OnInit {
     const hoursMap = { '7:00': 0, '9:00': 1, '11:00': 2, '13:00': 3, '15:00': 4, '16:00': 5, '18:00': 6, '20:00': 7 };
 
     if (this.groups !== undefined) {
+// tslint:disable-next-line: forin
       for (const index in this.groups) {
         for (const info of this.groups[index].classInfo) {
           const hour = hoursMap[info.time];

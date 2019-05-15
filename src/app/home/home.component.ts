@@ -11,7 +11,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private userService: UserService, private schoolService: SchoolService, private http: HttpClient) { }
+  constructor(public userService: UserService, private schoolService: SchoolService, private http: HttpClient) { }
   showDetails = false;
 
   ngOnInit() {

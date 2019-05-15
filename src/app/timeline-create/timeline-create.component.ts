@@ -21,7 +21,7 @@ export class TimelineCreateComponent implements OnInit {
   created = false;
   private suscript: Subscription;
 
-  constructor(private userService: UserService, private timetableService: TimetableService, private http: HttpClient) { }
+  constructor(public userService: UserService, private timetableService: TimetableService, private http: HttpClient) { }
 
   ngOnInit() {
     this.suscript = this.timetableService.changeData
