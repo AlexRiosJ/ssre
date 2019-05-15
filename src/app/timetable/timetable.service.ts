@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 export class TimetableService {
 
   public tempTimetable: GroupList[] = [];
-  public timetableName: string = '';
+  public timetableName = '';
   changeData = new Subject<GroupList[]>();
 
   constructor(private userService: UserService) { }
@@ -57,7 +57,7 @@ export class TimetableService {
   }
 
   notifyChanges() {
-    console.log(this.tempTimetable.slice());
+    // console.log(this.tempTimetable.slice());
     this.changeData.next(this.tempTimetable.slice());
   }
 
