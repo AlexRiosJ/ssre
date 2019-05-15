@@ -4,6 +4,8 @@ import { Student } from './Student';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalDirective } from 'ngx-bootstrap';
+import { environment } from 'src/environments/environment';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-student',
@@ -25,7 +27,8 @@ export class StudentComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private userService: UserService) { }
+              private userService: UserService,
+              private http: HttpClient) { }
 
   ngOnInit() {
     this.isClosed = false;
@@ -44,10 +47,25 @@ export class StudentComponent implements OnInit {
       } else {
           this.student.password = form.value.newPassword;
           this.updateUser();
+          this.http.patch(environment.apiUrl + '/user/' + this.userService.getActiveStudent().id, {
+            name: this.userService.getActiveStudent().name,
+            lastname: this.userService.getActiveStudent().lastname,
+            major: this.userService.getActiveStudent().major,
+            password: this.userService.getActiveStudent().password
+          }, {headers: new HttpHeaders({
+            'x-auth': this.userService.getActiveStudent().token
+          })}).subscribe(data => console.log(data));
           form.reset();
       }
     } else {
       this.updateUser();
+      this.http.patch(environment.apiUrl + '/user/' + this.userService.getActiveStudent().id, {
+        name: this.userService.getActiveStudent().name,
+        lastname: this.userService.getActiveStudent().lastname,
+        major: this.userService.getActiveStudent().major
+      }, {headers: new HttpHeaders({
+        'x-auth': this.userService.getActiveStudent().token
+      })}).subscribe(data => console.log(data));
       form.reset();
     }
   }

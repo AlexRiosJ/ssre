@@ -5,6 +5,8 @@ import { UserService } from '../user.service';
 import { NgForm } from '@angular/forms';
 import { TimetableService } from '../timetable/timetable.service';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-timeline-create',
@@ -19,7 +21,7 @@ export class TimelineCreateComponent implements OnInit {
   created = false;
   private suscript: Subscription;
 
-  constructor(private userService: UserService, private timetableService: TimetableService) { }
+  constructor(private userService: UserService, private timetableService: TimetableService, private http: HttpClient) { }
 
   ngOnInit() {
     this.suscript = this.timetableService.changeData
@@ -37,6 +39,11 @@ export class TimelineCreateComponent implements OnInit {
       this.noNameInTimetable = false;
       this.timetableService.timetableName = formulario.value.name;
       this.userService.getActiveStudent().timetables.push({ name: formulario.value.name, subjects: timetableToSend });
+      this.http.patch(environment.apiUrl + '/user/' + this.userService.getActiveStudent().id, {
+        timetables: this.userService.getActiveStudent().timetables
+      }, {headers: new HttpHeaders({
+        'x-auth': this.userService.getActiveStudent().token
+      })}).subscribe(data => console.log(data));
       this.tempTimetable = [];
       this.timetableService.tempTimetable = this.tempTimetable;
     } else if (index >= 0) {

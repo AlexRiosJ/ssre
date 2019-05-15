@@ -15,15 +15,17 @@ import { HttpClient } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   student: Student;
   invalidEntry = false;
+  suscribed = false;
 
   constructor(private userService: UserService,
-              private authService: AuthService,
-              private http: HttpClient) { }
+    private authService: AuthService,
+    private http: HttpClient) { }
 
   ngOnInit() {
   }
 
   submit(formulario: NgForm) {
+    this.suscribed = false;
     this.invalidEntry = false;
     const id = formulario.value.id;
     const password = formulario.value.password;
@@ -34,17 +36,18 @@ export class LoginComponent implements OnInit {
           id: studentAux.id,
           password
         }).subscribe(data => {
+          this.suscribed = true;
           // tslint:disable-next-line: no-string-literal
           if (data['message'] === 'success') {
-            this.invalidEntry = false;
-// tslint:disable-next-line: no-string-literal
+            // tslint:disable-next-line: no-string-literal
             studentAux.token = data['token'];
             this.authService.login();
             this.userService.setActiveStudent(studentAux);
-          } else {
-            this.invalidEntry = true;
           }
         });
+        if (!this.suscribed) {
+          this.invalidEntry = true;
+        }
       } else {
         this.invalidEntry = true;
       }
