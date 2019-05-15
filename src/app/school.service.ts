@@ -28,36 +28,12 @@ export class SchoolService {
         },
         err => console.log(err)
       );
-
-    // const requestURL = 'https://api.myjson.com/bins/i336m';
-    // const request = new XMLHttpRequest();
-    // request.open('GET', requestURL);
-    // // request.responseType = 'json';
-    // request.send();
-    // const self = this;
-    //     request.onload = () => {
-    //       const jsonFile = request.response;
-    //       const subjects = JSON.parse(jsonFile);
-    //       self.allSubjects = subjects;
-
-    //       for (const subject of subjects) {
-    // // tslint:disable-next-line: max-line-length
-    //         self.addSubject(subject._id, subject.code, subject.name, subject.description, subject.credits, subject.area, subject.department, subject.groups, subject.__v);
-    //         for (const group of subject.groups) {
-    //           self.addGroup(group._id, group.groupCode, group.name, group.teacher, group.classInfo);
-    //         }
-    //       }
-
-    //       for (const group of self.groups) {
-    //         self.addTeacher(group.teacher.name, group.teacher.lastname);
-    //       }
-    //     };
   }
 
   // tslint:disable-next-line: variable-name
   addSubject(_id: string, code: string, name: string, description: string, credits: number,
     // tslint:disable-next-line: variable-name
-    area: string, department: string, groups: GroupList[], __v: number) {
+             area: string, department: string, groups: GroupList[], __v: number) {
     const newSubject = new Subject(_id, code, name, description, credits, area, department, groups, __v);
     this.subjects.push(newSubject);
   }
