@@ -8,7 +8,6 @@ export class Student {
         public id: string, // Expediente
         public name: string,
         public lastname: string,
-        public currentTimetable: Timetable,
         public timetables: Timetable[],
         public password: string,
         public major: string,

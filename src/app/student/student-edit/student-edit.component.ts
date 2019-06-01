@@ -25,12 +25,7 @@ export class StudentEditComponent implements OnInit {
               private http: HttpClient) { }
 
   ngOnInit() {
-    this.student = new Student('', '', '', '',
-      {
-        name: '',
-        subjects: []
-      },
-      [], '', 'ISC', 'student', 'dummyToken', 0);
+    this.student = new Student('', '', '', '', [], '', 'ISC', 'student', 'dummyToken', 0);
   }
 
   submit(form: NgForm) {
@@ -49,7 +44,6 @@ export class StudentEditComponent implements OnInit {
           id: this.student.id,
           name: this.student.name,
           lastname: this.student.lastname,
-          currentTimetable: this.student.currentTimetable,
           timetables: this.student.timetables,
           password: this.student.password,
           major: this.student.major,

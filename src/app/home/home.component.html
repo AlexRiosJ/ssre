@@ -17,28 +17,15 @@
             <hr>
             <button *ngIf="!showDetails" class="btn btn-block btn-outline-info mr-3" (click)="showDetails = !showDetails">Mostrar detalles de horarios</button>
             <button *ngIf="showDetails" class="btn btn-block btn-info mr-3" (click)="showDetails = !showDetails">Ocultar detalles de horarios</button>
-            <!-- 
-                TODO: Define if this section should be here. There is already a section with this info
-            <hr>
-            <div id="about">
-                <h5 class="text-primary">Bienvenido al Sistema de Simulación de Ruta de Estudios del ITESO</h5>
-                <p class="text-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, alias?
-                    Possimus
-                    laudantium eveniet dicta itaque.</p>
-                <blockquote class="blockquote text-center"><em>asesoria@ayuda.mx</em></blockquote>
-                <p class="text-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, alias?
-                    Possimus
-                    laudantium eveniet dicta itaque.</p>
-                <h6 class="text-primary">Novedades</h6>
-                <h6 class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, placeat.
-                </h6>
-            </div> -->
         </div>
         <div class="col col-lg-8">
-            <div id="currentTimeTable">
-                <h5 class="text-primary">Horario actual</h5>
-                <app-timetable [groups]="userService.getActiveStudent().currentTimetable.subjects"></app-timetable>
-                <app-timetable-list *ngIf="showDetails" [groups]="userService.getActiveStudent().currentTimetable.subjects"></app-timetable-list>
+            <div id="noTimetables" *ngIf="userService.getActiveStudent().timetables.length <= 0">
+                <div class="text-center">
+                        <img src="https://raw.githubusercontent.com/AlexRiosJ/ssre/master/src/assets/hqssrelogo157x157.png" alt="SSRE">    
+                </div>
+                <br>
+                <h5 class="text-primary text-center">¡Agrega nuevos horarios!</h5>
+                <p class="text-success text-center">Aquí se verán los horarios que has creado</p>
             </div>
             <hr>
             <div id="timeTableList" *ngIf="userService.getActiveStudent().timetables.length > 0">
